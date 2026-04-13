@@ -1,39 +1,72 @@
+// Name: Nested For Loop with Mouse Interaction
+// Simple typewriter effect
+// Pippin Barr
+
 let string = `
-Hello! Welcome to the video editing prompt generator.`;
+Hello! 
+Welcome to the video editing prompt generator.
+`;
+
 let currentCharacter = 0;
+let pageMargin = 25;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
 }
 
 function draw() {
-  background('lightyellow');
+  background("#CC448A");
 
+  let currentString = string.substring(0, currentCharacter);
 
-  for (var x = 25; x < mouseX-25; x += 35) {
-    for (var y = 25; y < mouseY-25; y += 35) {
-      
-      fill ('lightblue'); 
-      noStroke(); 
-      ellipse(x, y, 25, 25);
-      console.log(x); 
-    }
-//Orange Hello
-  fill('orange'); 
-  textSize(55);
-  textFont("Starbim"); 
-  text("Hello!!", width/3, height/2);
-  
-  //Red Hello
-  fill('red'); 
-  textSize(25);
-  textFont("Dareo"); 
-  text("Hello!!", width/5, height/3);
-  
-   //Purple Hello
-  fill('purple'); 
-  textSize(35);
-  textFont("Outline Style");
-  text("Hello!!", width/2, height/1.5);
+  // Page background
+  push();
+  fill("#CC448A");
+  noStroke();
+  rect(pageMargin, pageMargin, width - pageMargin * 2, height - pageMargin);
+  pop();
+
+  // Typewriter text
+  push();
+  fill("#F3C9E2");
+  textSize(90);
+  textFont("Starbim");
+  textAlign(LEFT, TOP);
+  text(
+    currentString,
+    pageMargin + 10,
+    pageMargin + 10,
+    width - pageMargin * 2,
+    height - pageMargin,
+  );
+  pop();
+
+  currentCharacter += 0.15;
+
+  // MENU (top-right)
+  textFont("Dareo");
+  textSize(40);
+  fill("#FFEFD6");
+  textAlign(RIGHT, CENTER);
+
+  text("home", width - 40, 60);
+  text("generator", width - 40, 110);
+  text("submit", width - 40, 160);
+
+  textFont("Starbim");
 }
+
+function mousePressed() {
+  // MENU CLICKS
+  if (mouseX > width - 200 && mouseX < width) {
+    if (mouseY > 40 && mouseY < 80)
+      window.location.href =
+        "https://editor.p5js.org/eadnevieve/full/dqBBVFUm4";
+    if (mouseY > 90 && mouseY < 130)
+      window.location.href =
+        "https://editor.p5js.org/eadnevieve/full/RfhmAIVvR";
+    if (mouseY > 140 && mouseY < 180)
+      window.location.href =
+        "https://editor.p5js.org/eadnevieve/full/Miji2AV-0";
+  }
 }
