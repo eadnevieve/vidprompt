@@ -54,11 +54,11 @@ function mousePressed() {
   // MENU CLICKS
   if (mouseX > width - 200 && mouseX < width) {
     if (mouseY > 40 && mouseY < 80)
-      window.location.href = "https://editor.p5js.org/eadnevieve/full/dqBBVFUm4";
+      window.location.href = "sketch.js";
     if (mouseY > 90 && mouseY < 130)
-      window.location.href = "https://editor.p5js.org/eadnevieve/full/RfhmAIVvR";
+      window.location.href = "2sketch.js";
     if (mouseY > 140 && mouseY < 180)
-      window.location.href = "https://editor.p5js.org/eadnevieve/full/Miji2AV-0";
+      window.location.href = "3sketch.js";
   }
 }
 
