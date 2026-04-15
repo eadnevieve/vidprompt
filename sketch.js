@@ -54,11 +54,11 @@ function mousePressed() {
   // MENU CLICKS
   if (mouseX > width - 200 && mouseX < width) {
     if (mouseY > 40 && mouseY < 80)
-      window.location.href = "sketch.js";
+      window.location.href = "index.html";
     if (mouseY > 90 && mouseY < 130)
-      window.location.href = "2sketch.js";
+      window.location.href = "2index.html";
     if (mouseY > 140 && mouseY < 180)
-      window.location.href = "3sketch.js";
+      window.location.href = "3index.html";
   }
 }
 
