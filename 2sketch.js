@@ -1,5 +1,6 @@
 let promptImg;
 
+
 // WORD LISTS
 let words = {
   program: [
@@ -7,7 +8,7 @@ let words = {
     "Adobe Premiere Pro",
     "CapCut",
     "Alight Motion",
-    "Videostar",
+    "Videostar"
   ],
 
   style: [
@@ -22,10 +23,14 @@ let words = {
     "Flow",
     "Mograph",
     "3D",
-    "Animation",
+    "Animation"
   ],
 
-  show: ["Avatar: The Last Airbender", "Arcane", "Alice in Borderland"],
+  show: [
+    "Avatar: The Last Airbender",
+    "Arcane",
+    "Alice in Borderland"
+  ],
 
   charactersByShow: {
     "Avatar: The Last Airbender": [
@@ -38,10 +43,10 @@ let words = {
       "Iroh",
       "Suki",
       "Ty Lee",
-      "Mai",
+      "Mai"
     ],
 
-    Arcane: [
+    "Arcane": [
       "Vi",
       "Jinx",
       "Caitlyn",
@@ -51,7 +56,7 @@ let words = {
       "Silco",
       "Mel",
       "Heimerdinger",
-      "Sevika",
+      "Sevika"
     ],
 
     "Alice in Borderland": [
@@ -64,41 +69,49 @@ let words = {
       "Hatter",
       "Tatta",
       "Ann",
-      "Mira",
-    ],
-  },
+      "Mira"
+    ]
+  }
 };
 
-// FIELDS variable that holds an array of objects
+let myFont;
+let myDont;
+
+function preload() {
+  myFont = loadFont('Starbim.otf');
+  myDont = loadFont('Dareo.otf');
+  promptImg = loadImage("prompt.png");
+}
+
+// FIELDS variable that holds an array of objects 
 let fields = [
   { label: "character", value: "" },
   { label: "show", value: "" },
   { label: "style", value: "" },
-  { label: "program", value: "" },
+  { label: "program", value: "" }
 ];
 
 // STAR BUTTONS (new roles)
 let stars = [
   { field: "characterShow", x: 655, y: 470, r: 28 }, // star 1
-  { field: "style", x: 705, y: 470, r: 28 }, // star 2
-  { field: "program", x: 755, y: 470, r: 28 }, // star 3
-  { field: "all", x: 805, y: 470, r: 28 }, // star 4
+  { field: "style",         x: 705, y: 470, r: 28 }, // star 2
+  { field: "program",       x: 755, y: 470, r: 28 }, // star 3
+  { field: "all",           x: 805, y: 470, r: 28 }  // star 4
 ];
 
-function preload() {
-  promptImg = loadImage("prompt.png");
+
+function setup() { 
+  createCanvas(windowWidth, windowHeight);
+  // Apply the loaded font
+  textFont(myFont);
 }
 
-function setup() {
-  createCanvas(windowWidth, windowHeight);
-  textFont("Starbim");
-}
 
 function draw() {
   background("#C03556");
 
   // MENU (top-right)
-  textFont("Dareo");
+  textFont(myDont);
   textSize(40);
   fill("#FFEFD6");
   textAlign(RIGHT, CENTER);
@@ -131,46 +144,38 @@ function drawColoredPrompt() {
   let y2 = 289;
   let y3 = 318;
   let y4 = 347;
-  //ASSIGNING COLORS
+//ASSIGNING COLORS
   drawPromptLine(
     [
       { text: "Edit ", color: "#4D3447", bg: null },
-      { text: fields[0].value || "___", color: "#B24155", bg: "#F7F2CF" },
+      { text: fields[0].value || "___", color: "#B24155", bg: "#F7F2CF" }
     ],
-    leftX,
-    y1,
-    maxWidth,
+    leftX, y1, maxWidth
   );
 
   drawPromptLine(
     [
       { text: "from ", color: "#4D3447", bg: null },
-      { text: fields[1].value || "___", color: "#6D6B45", bg: "#FFEFD6" },
+      { text: fields[1].value || "___", color: "#6D6B45", bg: "#FFEFD6" }
     ],
-    leftX,
-    y2,
-    maxWidth,
+    leftX, y2, maxWidth
   );
 
   drawPromptLine(
     [
       { text: "in a ", color: "#4D3447", bg: null },
       { text: fields[2].value || "___", color: "#F3C9E2", bg: "#FDFAFA" },
-      { text: " style", color: "#4D3447", bg: null },
+      { text: " style", color: "#4D3447", bg: null }
     ],
-    leftX,
-    y3,
-    maxWidth,
+    leftX, y3, maxWidth
   );
 
   drawPromptLine(
     [
       { text: "using ", color: "#4D3447", bg: null },
-      { text: fields[3].value || "___", color: "#CC448A", bg: "#FFEFD6" },
+      { text: fields[3].value || "___", color: "#CC448A", bg: "#FFEFD6" }
     ],
-    leftX,
-    y4,
-    maxWidth,
+    leftX, y4, maxWidth
   );
 }
 //ADDING PADDING
@@ -180,17 +185,15 @@ function drawPromptLine(segments, startX, y, maxWidth) {
   let boxHeight = 26;
 
   textSize(24);
-  let widths = segments.map((s) => textWidth(s.text) + padding * 2);
-  let totalWidth =
-    widths.reduce((a, b) => a + b, 0) + gap * (segments.length - 1);
+  let widths = segments.map(s => textWidth(s.text) + padding * 2);
+  let totalWidth = widths.reduce((a, b) => a + b, 0) + gap * (segments.length - 1);
 
   let size = 24;
   while (totalWidth > maxWidth && size > 10) {
     size--;
     textSize(size);
-    widths = segments.map((s) => textWidth(s.text) + padding * 2);
-    totalWidth =
-      widths.reduce((a, b) => a + b, 0) + gap * (segments.length - 1);
+    widths = segments.map(s => textWidth(s.text) + padding * 2);
+    totalWidth = widths.reduce((a, b) => a + b, 0) + gap * (segments.length - 1);
   }
 
   let x = startX;
@@ -223,6 +226,7 @@ function assignCharacterShow() {
   fields[0].value = chosenCharacter;
   fields[1].value = chosenShow;
 }
+
 
 // Style button (auto-updates character)
 function assignStyle() {

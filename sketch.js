@@ -9,9 +9,19 @@ Welcome to the video editing prompt generator.
 
 let currentCharacter = 0;
 let pageMargin = 25;
+let myFont;
+let myDont;
+
+function preload() {
+  // Load a custom font before the sketch starts
+  myFont = loadFont('Starbim.otf');
+  myDont = loadFont('Dareo.otf');
+}
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
+    // Apply the loaded font
+  textFont(myFont);
 }
 
 function draw() {
@@ -30,7 +40,7 @@ function draw() {
   push();
   fill('#F3C9E2');
   textSize(90);
-  textFont("Starbim");
+  textFont(myFont);
   textAlign(LEFT, TOP);
   text(currentString, pageMargin + 10, pageMargin + 10, width - pageMargin * 2, height - pageMargin);
   pop();
@@ -38,7 +48,7 @@ function draw() {
   currentCharacter += 0.15;
 
   // MENU (top-right)
-  textFont("Dareo");
+  textFont(myDont);
   textSize(40);
   fill("#FFEFD6");
   textAlign(RIGHT, CENTER);
@@ -47,7 +57,7 @@ function draw() {
   text("generator", width - 40, 110);
   text("submit", width - 40, 160);
 
-  textFont("Starbim");
+  textFont(myFont);
 }
 
 function mousePressed() {
