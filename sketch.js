@@ -25,10 +25,10 @@ function setup() {
 }
 
 function draw() {
-  background('#CC448A');
+  background(img);
 
   // Photo bakcground
-  image(img,0, 0,windowWidth, windowHeight);
+  //image(img,0, 0,windowWidth, windowHeight);
   
   let currentString = string.substring(0, currentCharacter);
 
