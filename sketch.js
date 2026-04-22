@@ -39,16 +39,26 @@ function draw() {
   //rect(pageMargin, pageMargin, width - pageMargin * 2, height - pageMargin);
   pop();
 
+  
   // Typewriter text
   push();
   fill('#6D6B45');
   textSize(200);
   textFont(myFont);
-  textAlign(CENTER, CENTER);
+  textAlign(CENTER, TOP);
   text(currentString, pageMargin + 10, pageMargin + 10, width - pageMargin * 2, height - pageMargin);
   pop();
 
   currentCharacter += 0.15;
+  
+  // Subtitle text under the typewriter text
+push();
+fill('#6D6B45');
+textSize(40);        // smaller size
+textFont(myFont);
+textAlign(CENTER, TOP);
+text("to the video editing prompt generator", width/2, height/2 + 120);
+pop();
 
   // MENU (top-right)
   textFont(myDont);
