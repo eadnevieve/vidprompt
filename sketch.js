@@ -1,18 +1,18 @@
 // Name: Nested For Loop with Mouse Interaction
 // Simple typewriter effect
 // Pippin Barr
-
-let string = `
-Hello! 
-Welcome to the video editing prompt generator.
+let img;
+let string = ` 
+Welcome! 
 `;
-
+//to the video editing prompt generator.
 let currentCharacter = 0;
 let pageMargin = 25;
 let myFont;
 let myDont;
 
 function preload() {
+  img = loadImage('home2.svg'); 
   // Load a custom font before the sketch starts
   myFont = loadFont('Starbim.otf');
   myDont = loadFont('Dareo.otf');
@@ -27,21 +27,24 @@ function setup() {
 function draw() {
   background('#CC448A');
 
+  // Photo bakcground
+  image(img,0, 0,windowWidth, windowHeight);
+  
   let currentString = string.substring(0, currentCharacter);
 
   // Page background
   push();
   fill('#CC448A');
   noStroke();
-  rect(pageMargin, pageMargin, width - pageMargin * 2, height - pageMargin);
+  //rect(pageMargin, pageMargin, width - pageMargin * 2, height - pageMargin);
   pop();
 
   // Typewriter text
   push();
-  fill('#F3C9E2');
-  textSize(90);
+  fill('#6D6B45');
+  textSize(200);
   textFont(myFont);
-  textAlign(LEFT, TOP);
+  textAlign(CENTER, CENTER);
   text(currentString, pageMargin + 10, pageMargin + 10, width - pageMargin * 2, height - pageMargin);
   pop();
 
@@ -50,7 +53,7 @@ function draw() {
   // MENU (top-right)
   textFont(myDont);
   textSize(40);
-  fill("#FFEFD6");
+  fill("#4D3447");
   textAlign(RIGHT, CENTER);
 
   text("home", width - 40, 60);
