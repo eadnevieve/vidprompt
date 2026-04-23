@@ -12,15 +12,15 @@ let myFont;
 let myDont;
 
 function preload() {
-  img = loadImage('home2.svg'); 
+  img = loadImage("home2.svg");
   // Load a custom font before the sketch starts
-  myFont = loadFont('Starbim.otf');
-  myDont = loadFont('Dareo.otf');
+  myFont = loadFont("Starbim.otf");
+  myDont = loadFont("Dareo.otf");
 }
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-    // Apply the loaded font
+  // Apply the loaded font
   textFont(myFont);
 }
 
@@ -29,36 +29,41 @@ function draw() {
 
   // Photo bakcground
   //image(img,0, 0,windowWidth, windowHeight);
-  
+
   let currentString = string.substring(0, currentCharacter);
 
   // Page background
   push();
-  fill('#CC448A');
+  fill("#CC448A");
   noStroke();
   //rect(pageMargin, pageMargin, width - pageMargin * 2, height - pageMargin);
   pop();
 
-  
   // Typewriter text
   push();
-  fill('#6D6B45');
+  fill("#6D6B45");
   textSize(200);
   textFont(myFont);
   textAlign(CENTER, TOP);
-  text(currentString, pageMargin + 10, pageMargin + 10, width - pageMargin * 2, height - pageMargin);
+  text(
+    currentString,
+    pageMargin + 10,
+    pageMargin + 10,
+    width - pageMargin * 2,
+    height - pageMargin,
+  );
   pop();
 
   currentCharacter += 0.15;
-  
+
   // Subtitle text under the typewriter text
-push();
-fill('#6D6B45');
-textSize(40);        // smaller size
-textFont(myFont);
-textAlign(CENTER, TOP);
-text("to the video editing prompt generator", width/2, height/2 + 120);
-pop();
+  push();
+  fill("#6D6B45");
+  textSize(40); // smaller size
+  textFont(myFont);
+  textAlign(CENTER, TOP);
+  text("to the video editing prompt generator", width / 2, height / 2 + 120);
+  pop();
 
   // MENU (top-right)
   textFont(myDont);
@@ -76,33 +81,29 @@ pop();
 function mousePressed() {
   // MENU CLICKS
   if (mouseX > width - 200 && mouseX < width) {
-    if (mouseY > 40 && mouseY < 80)
-      window.location.href = "index.html";
-    if (mouseY > 90 && mouseY < 130)
-      window.location.href = "2index.html";
-    if (mouseY > 140 && mouseY < 180)
-      window.location.href = "3index.html";
+    if (mouseY > 40 && mouseY < 80) window.location.href = "index.html";
+    if (mouseY > 90 && mouseY < 130) window.location.href = "2index.html";
+    if (mouseY > 140 && mouseY < 180) window.location.href = "3index.html";
   }
 }
 
-    
 //Orange Hello
-  //fill ('#6D6B45');  
-  //textSize(25);
-  //textFont("Outline Style"); 
-  //text("Interact", width/4, height/1.2);
-  
-  //Red Hello
-  //fill ('#C03556');  
-  //textSize(25);
-  //textFont("Outline Style"); 
-  //text("Resources", width/2, height/1.2);
-  
-   //Purple Hello
-  //fill ('#B24155'); 
-  //textSize(25);
-  //textFont("Outline Style");
-  //text("Submit", width/1.2, height/1.2);
+//fill ('#6D6B45');
+//textSize(25);
+//textFont("Outline Style");
+//text("Interact", width/4, height/1.2);
+
+//Red Hello
+//fill ('#C03556');
+//textSize(25);
+//textFont("Outline Style");
+//text("Resources", width/2, height/1.2);
+
+//Purple Hello
+//fill ('#B24155');
+//textSize(25);
+//textFont("Outline Style");
+//text("Submit", width/1.2, height/1.2);
 
 //CC448A
 //F3C9E2

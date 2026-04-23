@@ -1,5 +1,8 @@
 let promptImg;
 
+//make sure starts are accessible to all functions, and not just mousePressed by declaring at the top of your sketch, which makes it 'global' and usable anywhere in the code. This way, you can define the stars array once and use it in both the draw function (to display the stars) and the mousePressed function (to check for clicks on the stars) without any issues.
+let stars = [];
+
 
 // WORD LISTS
 let words = {
@@ -92,12 +95,12 @@ let fields = [
 ];
 
 // STAR BUTTONS (new roles)
-let stars = [
-  { field: "characterShow", x: 655, y: 470, r: 28 }, // star 1
-  { field: "style",         x: 705, y: 470, r: 28 }, // star 2
-  { field: "program",       x: 755, y: 470, r: 28 }, // star 3
-  { field: "all",           x: 805, y: 470, r: 28 }  // star 4
-];
+// let stars = [
+//   { field: "characterShow", x: 655, y: 470, r: 28 }, // star 1
+//   { field: "style",         x: 705, y: 470, r: 28 }, // star 2
+//   { field: "program",       x: 755, y: 470, r: 28 }, // star 3
+//   { field: "all",           x: 805, y: 470, r: 28 }  // star 4
+// ];
 
 
 function setup() { 
@@ -132,18 +135,31 @@ function draw() {
 
   image(promptImg, imgX, imgY, imgW, imgH);
 
-  drawColoredPrompt();
+// Instead of the hardcoded stars array at the top, they are now inside the draw function, so that they can use the imgX, imgY, imgW, and imgH variables to calculate their positions based on the prompt image. This ensures that the star buttons are correctly positioned relative to the prompt image, even if the image size or position changes:
+// after you calculate imgX, imgY, imgW, imgH...
+stars = [
+  { field: "characterShow", x: imgX + imgW * 0.35, y: imgY + imgH * 0.82, r: 28 },
+  { field: "style",         x: imgX + imgW * 0.42, y: imgY + imgH * 0.82, r: 28 },
+  { field: "program",       x: imgX + imgW * 0.50, y: imgY + imgH * 0.82, r: 28 },
+  { field: "all",           x: imgX + imgW * 0.58, y: imgY + imgH * 0.82, r: 28 }
+];
+
+  //This callus up the function into draw with the imgX, imgY, imgW, and imgH parameters that are used to calculate the position and size of the prompt area, ensuring that the text is properly aligned within the image.
+drawColoredPrompt(imgX, imgY, imgW, imgH);
 }
 //CENTERING text
-function drawColoredPrompt() {
-  let leftX = 603;
-  let rightX = 864;
+// the imgX, imgY, imgW, and imgH parameters are used to calculate the position and size of the prompt area, ensuring that the text is properly aligned within the image.
+function drawColoredPrompt(imgX, imgY, imgW, imgH) {
+  //i guessed a bit on these multipliers to get the text in the right place... By multiplying the imgX and imgW by specific values, the code determines the horizontal positions (leftX and rightX) for the text within the prompt image. This allows for proper alignment and spacing of the text within the designated area of the image.
+  let leftX  = imgX + imgW * 0.15; // deterimines horizontal position
+  let rightX = imgX + imgW * 0.5; // determines font size and max width of text
   let maxWidth = rightX - leftX;
 
-  let y1 = 260;
-  let y2 = 289;
-  let y3 = 318;
-  let y4 = 347;
+  //by multiplying the imgY and imgH by specific values, the code determines the vertical positions (y1, y2, y3, y4) for each line of text within the prompt image. This ensures that the text is evenly spaced and properly aligned within the designated area of the image.
+  let y1 = imgY + imgH * 0.22;
+  let y2 = imgY + imgH * 0.33;
+  let y3 = imgY + imgH * 0.44;
+  let y4 = imgY + imgH * 0.5;
 //ASSIGNING COLORS
   drawPromptLine(
     [
@@ -250,21 +266,37 @@ function generateAll() {
 }
 
 //CLICKING making it work
-function mousePressed() {
-  // MENU CLICKS
-  if (mouseX > width - 200 && mouseX < width) {
-    if (mouseY > 40 && mouseY < 80)
-      window.location.href = "index.html";
-    if (mouseY > 90 && mouseY < 130)
-      window.location.href = "2index.html";
-    if (mouseY > 140 && mouseY < 180)
-      window.location.href = "3index.html";
-  }
+// function mousePressed() {
+//   // MENU CLICKS
+//   if (mouseX > width - 200 && mouseX < width) {
+//     if (mouseY > 40 && mouseY < 80)
+//       window.location.href = "index.html";
+//     if (mouseY > 90 && mouseY < 130)
+//       window.location.href = "2index.html";
+//     if (mouseY > 140 && mouseY < 180)
+//       window.location.href = "3index.html";
+//   }
 
-  // STAR button CLICKS
+//   // STAR button CLICKS
+//   for (let s of stars) {
+//     let d = dist(mouseX, mouseY, s.x, s.y);
+
+//     if (d < s.r) {
+//       if (s.field === "characterShow") assignCharacterShow();
+//       else if (s.field === "style") assignStyle();
+//       else if (s.field === "program") assignProgram();
+//       else if (s.field === "all") generateAll();
+//     }
+//   }
+// }
+
+// I had to keep checking your mousepressed and the location of the stars, so I added some console logs to make it easier to debug and see what's going on when you click. This way, you can see exactly where you're clicking and the current positions of the stars, which should help you identify any issues with the click detection logic. This is sourced from Calude Code. 
+function mousePressed() {
+  console.log("clicked at:", mouseX, mouseY);
+  console.log("stars:", stars.map(s => `${s.field}: (${Math.round(s.x)}, ${Math.round(s.y)})`));
+  
   for (let s of stars) {
     let d = dist(mouseX, mouseY, s.x, s.y);
-
     if (d < s.r) {
       if (s.field === "characterShow") assignCharacterShow();
       else if (s.field === "style") assignStyle();
