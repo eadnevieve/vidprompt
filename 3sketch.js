@@ -52,7 +52,7 @@ function draw() {
   textSize(60);
   fill("#FDFAFA");
   textFont("Starbim");
-  text(`SUBMIT PLS,<3 ${nameInput.value()}`, width / 2, height / 5);
+  text(`SUBMIT PLS,<3 ${nameInput.value()}`, width / 2, height / 7);
 
   // MENU
   textFont("Dareo");
@@ -97,7 +97,7 @@ function positionForm() {
 
 // 🎨 STYLE FUNCTION
 function styleInput(el) {
-  el.style("background", "#E9E6DC");
+  el.style("background", "#FBF0F6");
   el.style("border", "none");
   el.style("border-radius", "20px");
   el.style("padding", "10px");
