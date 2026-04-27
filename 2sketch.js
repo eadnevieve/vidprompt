@@ -63,6 +63,11 @@ function draw() {
   let radius = max(windowWidth, windowHeight);
   radialGradient(width / 2, height / 2, inner, outer, radius);
 
+   // ⭐ COORDINATE DEBUG (moved to the VERY TOP so it's always visible)
+  fill(255);
+  textSize(20);
+  text(mouseX + ", " + mouseY, mouseX + 15, mouseY - 15);
+  
   // MENU
   textFont(myDont);
   textSize(40);
