@@ -138,18 +138,30 @@ function draw() {
 
 
   // DEBUG: show star hitboxes
-  for (let s of stars) {
-  fill("rgba(255, 255, 0, 0.5)");
-  noStroke();
-  circle(s.x, s.y, s.r * 2);
+  for (let i = 0; i < stars.length; i++) {
+  let s = stars[i];
+
+  // star colors in order:
+  let colors = ["#B24155", "#F3C9E2", "#CC448A", "#6D6B45"];
+
+  drawStar(s.x, s.y, s.r, colors[i]);
 }
 
-  // DRAW THE PROMPT TEXT
-  drawColoredPrompt(imgX, imgY, imgW, imgH);
-}
 
 //CENTERING text
 // the imgX, imgY, imgW, and imgH parameters are used to calculate the position and size of the prompt area, ensuring that the text is properly aligned within the image.
+function drawStar(x, y, radius, color) {
+  fill(color);
+  noStroke();
+  beginShape();
+  for (let i = 0; i < 10; i++) {
+    let angle = PI / 5 * i;
+    let r = (i % 2 === 0) ? radius : radius / 2;
+    vertex(x + cos(angle) * r, y + sin(angle) * r);
+  }
+  endShape(CLOSE);
+}
+
 function drawColoredPrompt(imgX, imgY, imgW, imgH) {
   //i guessed a bit on these multipliers to get the text in the right place... By multiplying the imgX and imgW by specific values, the code determines the horizontal positions (leftX and rightX) for the text within the prompt image. This allows for proper alignment and spacing of the text within the designated area of the image.
   let leftX = imgX + imgW * 0.15; // deterimines horizontal position
