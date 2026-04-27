@@ -1,10 +1,12 @@
+//GLOBAL VARIABLES ❤️
 let promptImg;
+
 // ⭐ STAR BUTTONS — using relative multipliers
 let stars = [
   { field: "characterShow", mx: 0.1637, my: 0.9468, r: 28 },
-  { field: "style",         mx: 0.2677, my: 0.9553, r: 28 },
-  { field: "program",       mx: 0.3720, my: 0.9496, r: 28 },
-  { field: "all",           mx: 0.4740, my: 0.9468, r: 28 }
+  { field: "style", mx: 0.2677, my: 0.9553, r: 28 },
+  { field: "program", mx: 0.372, my: 0.9496, r: 28 },
+  { field: "all", mx: 0.474, my: 0.9468, r: 28 },
 ];
 
 // WORD LISTS
@@ -16,7 +18,6 @@ let words = {
     "Alight Motion",
     "Videostar",
   ],
-
   style: [
     "Velocity",
     "Transition",
@@ -31,9 +32,7 @@ let words = {
     "3D",
     "Animation",
   ],
-
   show: ["Avatar: The Last Airbender", "Arcane", "Alice in Borderland"],
-
   charactersByShow: {
     "Avatar: The Last Airbender": [
       "Aang",
@@ -77,24 +76,25 @@ let words = {
 let myFont;
 let myDont;
 
-function preload() {
-  promptImg = loadImage("prompt.png");
-  myFont = loadFont("Starbim.otf");
-  myDont = loadFont("Dareo.otf");
-}
-
+// FIELDS
 let fields = [
   { label: "character", value: "" },
   { label: "show", value: "" },
   { label: "style", value: "" },
   { label: "program", value: "" },
 ];
+//PRELOAD + SETUP❤️
+function preload() {
+  promptImg = loadImage("prompt.png");
+  myFont = loadFont("Starbim.otf");
+  myDont = loadFont("Dareo.otf");
+}
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
   textFont(myFont);
 }
-
+//BG Gradient❤️
 function radialGradient(x, y, innerColor, outerColor, radius) {
   noFill();
   for (let r = radius; r > 6; r -= 2) {
@@ -104,8 +104,7 @@ function radialGradient(x, y, innerColor, outerColor, radius) {
     ellipse(x, y, r * 2, r * 2);
   }
 }
-
-// ---------------------- STAR SHAPE ----------------------
+//starshape❤️
 function drawStar(x, y, radius, color) {
   fill(color);
   noStroke();
@@ -117,8 +116,7 @@ function drawStar(x, y, radius, color) {
   }
   endShape(CLOSE);
 }
-
-// ---------------------- PROMPT TEXT ----------------------
+//Prompt Text functions❤️
 function drawColoredPrompt(imgX, imgY, imgW, imgH) {
   let leftX = imgX + imgW * 0.15;
   let rightX = imgX + imgW * 0.5;
@@ -129,7 +127,6 @@ function drawColoredPrompt(imgX, imgY, imgW, imgH) {
   let y3 = imgY + imgH * 0.44;
   let y4 = imgY + imgH * 0.5;
 
-  
   drawPromptLine(
     [
       { text: "Edit ", color: "#4D3447" },
@@ -209,7 +206,30 @@ function drawPromptLine(segments, startX, y, maxWidth) {
     x += widths[i] + gap;
   }
 }
+//Missing functions (more)❤️
+function assignCharacterShow() {
+  let shows = Object.keys(words.charactersByShow);
+  let chosenShow = random(shows);
+  let chosenCharacter = random(words.charactersByShow[chosenShow]);
 
+  fields[0].value = chosenCharacter;
+  fields[1].value = chosenShow;
+}
+
+function assignStyle() {
+  fields[2].value = random(words.style);
+}
+
+function assignProgram() {
+  fields[3].value = random(words.program);
+}
+
+function generateAll() {
+  assignCharacterShow();
+  assignStyle();
+  assignProgram();
+}
+//DRAW LOOP important❤️
 function draw() {
   background("#C03556");
 
@@ -219,7 +239,7 @@ function draw() {
   let radius = max(windowWidth, windowHeight);
   radialGradient(width / 2, height / 2, inner, outer, radius);
 
-  // ⭐ MENU (top-right)
+  // ⭐ MENU
   textFont(myDont);
   textSize(40);
   fill("#FFEFD6");
@@ -240,16 +260,13 @@ function draw() {
 
   image(promptImg, imgX, imgY, imgW, imgH);
 
-  // ⭐ DRAW STARS USING RELATIVE MULTIPLIERS
+  // ⭐ DRAW STARS USING MULTIPLIERS
   let colors = ["#B24155", "#F3C9E2", "#CC448A", "#6D6B45"];
 
   for (let i = 0; i < stars.length; i++) {
     let s = stars[i];
-
-    // convert multipliers → actual coordinates
     s.x = imgX + imgW * s.mx;
     s.y = imgY + imgH * s.my;
-
     drawStar(s.x, s.y, s.r, colors[i]);
   }
 
@@ -261,13 +278,10 @@ function draw() {
   textSize(20);
   text(`${mouseX}, ${mouseY}`, mouseX + 15, mouseY - 15);
 }
-
-// ---------------------- CLICK HANDLING ----------------------
+//CLICKITY CLICK❤️
 function mousePressed() {
-  // STAR button CLICKS
-for (let s of stars) {
-  let d = dist(mouseX, mouseY, s.x, s.y);
-
+  for (let s of stars) {
+    let d = dist(mouseX, mouseY, s.x, s.y);
     if (d < s.r) {
       if (s.field === "characterShow") assignCharacterShow();
       else if (s.field === "style") assignStyle();
@@ -276,8 +290,7 @@ for (let s of stars) {
     }
   }
 }
-
-// ---------------------- WINDOW RESIZE ----------------------
+//REsize❤️
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
 }
