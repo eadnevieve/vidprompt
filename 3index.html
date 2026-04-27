@@ -1,41 +1,16 @@
-<div class="form-wrapper">
-  <img src="submit.png" class="form-bg">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <form id="submitForm" action="https://formspree.io/f/meevwldn" method="POST">
+  <title>Video Prompt Generator</title>
+  <link rel="icon" type="image/x-icon" href="favicon.png">
+  <link rel="stylesheet" type="text/css" href="style.css">
 
-    <!-- TOP ROW -->
-    <div class="row two">
-      <div class="field">
-        <label>Name*</label>
-        <input type="text" name="name" required>
-      </div>
+  <!-- p5.js libraries -->
+  <script src="libraries/p5.min.js"></script>
+  <script src="libraries/p5.sound.min.js"></script>
+</head>
 
-      <div class="field">
-        <label>Email*</label>
-        <input type="email" name="email" required>
-      </div>
-    </div>
-
-    <!-- SECOND ROW -->
-    <div class="row two">
-      <div class="field">
-        <label>Category*</label>
-        <select name="category" required>
-          <option value="">Select one</option>
-          <option>Character</option>
-          <option>Show</option>
-          <option>Style</option>
-          <option>Program</option>
-        </select>
-      </div>
-
-      <div class="field">
-        <label>IDEA:</label>
-        <textarea name="idea" required></textarea>
-      </div>
-    </div>
-
-    <button type="submit" class="submit-btn">SUBMIT</button>
-
-  </form>
-</div>
+<body>
