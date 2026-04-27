@@ -143,11 +143,13 @@ function draw() {
   ];
 
   //This callus up the function into draw with the imgX, imgY, imgW, and imgH parameters that are used to calculate the position and size of the prompt area, ensuring that the text is properly aligned within the image.
-  drawColoredPrompt(imgX, imgY, imgW, imgH);
-  for (let s of stars) {
-  fill("yellow");
+  // DEBUG: show star hitboxes
+for (let s of stars) {
+  fill("rgba(255, 255, 0, 0.5)");
   noStroke();
   circle(s.x, s.y, s.r * 2);
+}
+
 }
 
 }
