@@ -48,7 +48,7 @@ function setup() {
 
 function radialGradient(x, y, innerColor, outerColor, radius) {
   noFill();
-for (let r = radius; r > 6; r -= 2) {
+  for (let r = radius; r > 15; r -= 1) {
     let t = r / radius;
     let c = lerpColor(outerColor, innerColor, 1 - t);
     stroke(c);
