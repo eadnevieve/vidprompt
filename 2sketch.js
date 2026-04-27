@@ -8,7 +8,7 @@ let words = {
     "Adobe Premiere Pro",
     "CapCut",
     "Alight Motion",
-    "Videostar"
+    "Videostar",
   ],
 
   style: [
@@ -84,12 +84,25 @@ function draw() {
 
   image(promptImg, imgX, imgY, imgW, imgH);
 
-  // RELATIVE STAR POSITIONS (WORKS EVERYWHERE)
+  // ⭐ INCH → PIXEL CONVERSION
+  let inch = 96;
+  let halfInch = 48;
+
+  // ⭐ BASE RELATIVE POSITION
+  let baseX = imgX + imgW * 0.375;
+  let baseY = imgY + imgH * 0.825;
+
+  // ⭐ APPLY YOUR SHIFTS
+  let shiftLeft = -inch;      // 1 inch left
+  let shiftDown = halfInch;   // 0.5 inch down
+  let extraSpacing = halfInch; // 0.5 inch between stars
+
+  // ⭐ FINAL STAR POSITIONS
   stars = [
-    { field: "characterShow", x: imgX + imgW * 0.375, y: imgY + imgH * 0.825, r: 28 },
-    { field: "style",         x: imgX + imgW * 0.445, y: imgY + imgH * 0.825, r: 28 },
-    { field: "program",       x: imgX + imgW * 0.515, y: imgY + imgH * 0.825, r: 28 },
-    { field: "all",           x: imgX + imgW * 0.585, y: imgY + imgH * 0.825, r: 28 }
+    { field: "characterShow", x: baseX + shiftLeft,                     y: baseY + shiftDown, r: 28 },
+    { field: "style",         x: baseX + shiftLeft + extraSpacing,      y: baseY + shiftDown, r: 28 },
+    { field: "program",       x: baseX + shiftLeft + extraSpacing * 2,  y: baseY + shiftDown, r: 28 },
+    { field: "all",           x: baseX + shiftLeft + extraSpacing * 3,  y: baseY + shiftDown, r: 28 }
   ];
 
   // DRAW STAR SHAPES
