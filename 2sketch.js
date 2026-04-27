@@ -56,12 +56,15 @@ function draw() {
 let bgW = img.width;
 let bgH = img.height;
 
-let scale = max(windowWidth / bgW, windowHeight / bgH);
+let scale = min(windowWidth / bgW, windowHeight / bgH);
 
 let newW = bgW * scale;
 let newH = bgH * scale;
 
-image(img, 0, 0, newW, newH);  }
+let x = (windowWidth - newW) / 2;
+let y = (windowHeight - newH) / 2;
+
+image(img, x, y, newW, newH);
 
   // COORDINATE DEBUG
   fill(255);
