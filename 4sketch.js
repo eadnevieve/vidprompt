@@ -243,14 +243,14 @@ let resources = {
    //["(Coloring Giveaway) Moody Coloring", "https://mega.nz/folder/placeholderX"]
  //],
 
-"SFX Giveaways": [
-  ["(SFX) SFX Pack 1", "https://mega.nz/folder/placeholderY"],
-  ["(SFX) SFX Pack 2", "https://mega.nz/folder/placeholderZ"],
-  ["(SFX) SFX Pack 3", "https://mega.nz/folder/placeholderAA"],
-  ["(SFX) Whoosh Pack", "https://mega.nz/folder/placeholderAB"],
-  ["(SFX) Impact Pack", "https://mega.nz/folder/placeholderAC"],
-  ["(SFX) Glitch SFX Pack", "https://mega.nz/folder/placeholderAD"]
-],
+//"SFX Giveaways": [
+  //["(SFX) SFX Pack 1", "https://mega.nz/folder/placeholderY"],
+  //["(SFX) SFX Pack 2", "https://mega.nz/folder/placeholderZ"],
+  //["(SFX) SFX Pack 3", "https://mega.nz/folder/placeholderAA"],
+  //["(SFX) Whoosh Pack", "https://mega.nz/folder/placeholderAB"],
+  //["(SFX) Impact Pack", "https://mega.nz/folder/placeholderAC"],
+  //["(SFX) Glitch SFX Pack", "https://mega.nz/folder/placeholderAD"]
+//],
   
   
 
@@ -262,7 +262,7 @@ let resources = {
   ["(Website) Canva", "https://www.canva.com/"],
   ["(Website) Kapwing", "https://www.kapwing.com/"],
   ["(Website) Flaticon", "https://www.flaticon.com/"],
-  ["(Website) Pixabay", "https://pixabay.com/"],
+ // ["(Website) Pixabay", "https://pixabay.com/"],
   ["(Website) Unsplash", "https://unsplash.com/"]
 ],
 
@@ -276,7 +276,7 @@ let resources = {
 
 "Image Upscalers": [
   ["(Upscaler) BigJPG", "https://bigjpg.com/"],
-  ["(Upscaler) Waifu2x", "https://waifu2x.booru.pics/"],
+  //["(Upscaler) Waifu2x", "https://waifu2x.booru.pics/"],
   ["(Upscaler) Upscale.media", "https://www.upscale.media/"],
   ["(Upscaler) Let’s Enhance", "https://letsenhance.io/"],
   ["(Upscaler) ClipDrop Upscaler", "https://clipdrop.co/super-resolution"]
@@ -290,14 +290,14 @@ let resources = {
   ["(Online Editor) Figma", "https://www.figma.com/"]
 ],
 
-"AI Tools": [
-  ["(AI) ChatGPT", "https://chat.openai.com/"],
-  ["(AI) Midjourney", "https://www.midjourney.com/"],
-  ["(AI) RunwayML", "https://runwayml.com/"],
-  ["(AI) Pika Labs", "https://pika.art/"],
-  ["(AI) ElevenLabs", "https://elevenlabs.io/"],
-  ["(AI) ClipDrop", "https://clipdrop.co/"]
-],
+//"AI Tools": [
+  //["(AI) ChatGPT", "https://chat.openai.com/"],
+  //["(AI) Midjourney", "https://www.midjourney.com/"],
+  //["(AI) RunwayML", "https://runwayml.com/"],
+  //["(AI) Pika Labs", "https://pika.art/"],
+  //["(AI) ElevenLabs", "https://elevenlabs.io/"],
+  //["(AI) ClipDrop", "https://clipdrop.co/"]
+//],
 
 "Voice Removers": [
   ["(Voice Remover) Vocal Remover", "https://vocalremover.org/"],
@@ -315,17 +315,17 @@ let resources = {
   ["(Text Animation) Canva Text Effects", "https://www.canva.com/"]
 ],
 
-"Fonts": [
-  ["(Font) Montserrat", "https://fonts.google.com/specimen/Montserrat"],
-  ["(Font) Poppins", "https://fonts.google.com/specimen/Poppins"],
-  ["(Font) Inter", "https://fonts.google.com/specimen/Inter"],
-  ["(Font) Bebas Neue", "https://fonts.google.com/specimen/Bebas+Neue"],
-  ["(Font) Roboto", "https://fonts.google.com/specimen/Roboto"]
-],
+//"Fonts": [
+  //["(Font) Montserrat", "https://fonts.google.com/specimen/Montserrat"],
+  //["(Font) Poppins", "https://fonts.google.com/specimen/Poppins"],
+  //["(Font) Inter", "https://fonts.google.com/specimen/Inter"],
+  //["(Font) Bebas Neue", "https://fonts.google.com/specimen/Bebas+Neue"],
+  //["(Font) Roboto", "https://fonts.google.com/specimen/Roboto"]
+//],
 
 "Font Sites": [
   ["(Font Site) DaFont", "https://www.dafont.com/"],
-  ["(Font Site) Google Fonts", "https://fonts.google.com/"],
+  //["(Font Site) Google Fonts", "https://fonts.google.com/"],
   ["(Font Site) FontSpace", "https://www.fontspace.com/"],
   ["(Font Site) 1001 Fonts", "https://www.1001fonts.com/"],
   ["(Font Site) FontGet", "https://www.fontget.com/"]
@@ -338,13 +338,13 @@ let resources = {
   ["(Font Finder) Identifont", "https://www.identifont.com/"]
 ],
 
-"Font Packs": [
-  ["(Font Pack) Aesthetic Fonts Pack", "https://mega.nz/folder/placeholderAF1"],
-  ["(Font Pack) Minimal Fonts Pack", "https://mega.nz/folder/placeholderAF2"],
-  ["(Font Pack) Bold Fonts Pack", "https://mega.nz/folder/placeholderAF3"],
-  ["(Font Pack) Script Fonts Pack", "https://mega.nz/folder/placeholderAF4"],
-  ["(Font Pack) Sans Serif Pack", "https://mega.nz/folder/placeholderAF5"]
-],
+//"Font Packs": [
+  //["(Font Pack) Aesthetic Fonts Pack", "https://mega.nz/folder/placeholderAF1"],
+  //["(Font Pack) Minimal Fonts Pack", "https://mega.nz/folder/placeholderAF2"],
+  //["(Font Pack) Bold Fonts Pack", "https://mega.nz/folder/placeholderAF3"],
+  //["(Font Pack) Script Fonts Pack", "https://mega.nz/folder/placeholderAF4"],
+  //["(Font Pack) Sans Serif Pack", "https://mega.nz/folder/placeholderAF5"]
+//],
   
    "TikTok Editing Tutorials": [
   ["(TikTok Edit) Basic TikTok Editing Tutorial", "https://youtu.be/placeholder200"],

@@ -7,7 +7,7 @@ let words = {
     "Adobe Premiere Pro",
     "CapCut",
     "Alight Motion",
-    "Videostar"
+    "Videostar",
   ],
 
   style: [
@@ -22,28 +22,51 @@ let words = {
     "Flow",
     "Mograph",
     "3D",
-    "Animation"
+    "Animation",
   ],
 
-  show: [
-    "Avatar: The Last Airbender",
-    "Arcane",
-    "Alice in Borderland"
-  ],
+  show: ["Avatar: The Last Airbender", "Arcane", "Alice in Borderland"],
 
   charactersByShow: {
     "Avatar: The Last Airbender": [
-      "Aang","Katara","Sokka","Zuko","Toph","Azula","Iroh","Suki","Ty Lee","Mai"
+      "Aang",
+      "Katara",
+      "Sokka",
+      "Zuko",
+      "Toph",
+      "Azula",
+      "Iroh",
+      "Suki",
+      "Ty Lee",
+      "Mai",
     ],
 
-    "Arcane": [
-      "Vi","Jinx","Caitlyn","Jayce","Viktor","Ekko","Silco","Mel","Heimerdinger","Sevika"
+    Arcane: [
+      "Vi",
+      "Jinx",
+      "Caitlyn",
+      "Jayce",
+      "Viktor",
+      "Ekko",
+      "Silco",
+      "Mel",
+      "Heimerdinger",
+      "Sevika",
     ],
 
     "Alice in Borderland": [
-      "Arisu","Usagi","Chishiya","Kuina","Niragi","Aguni","Hatter","Tatta","Ann","Mira"
-    ]
-  }
+      "Arisu",
+      "Usagi",
+      "Chishiya",
+      "Kuina",
+      "Niragi",
+      "Aguni",
+      "Hatter",
+      "Tatta",
+      "Ann",
+      "Mira",
+    ],
+  },
 };
 
 let myFont;
@@ -54,19 +77,19 @@ let fields = [
   { label: "character", value: "" },
   { label: "show", value: "" },
   { label: "style", value: "" },
-  { label: "program", value: "" }
+  { label: "program", value: "" },
 ];
 
 // Stars (positions updated in draw)
 let stars = [];
 
 function preload() {
-  myFont = loadFont('Starbim.otf');
-  myDont = loadFont('Dareo.otf');
+  myFont = loadFont("Starbim.otf");
+  myDont = loadFont("Dareo.otf");
   promptImg = loadImage("prompt.png");
 }
 
-function setup() { 
+function setup() {
   createCanvas(windowWidth, windowHeight);
   textFont(myFont);
 }
@@ -112,10 +135,15 @@ function draw() {
 
   // ⭐ STAR POSITIONS (relative to PNG)
   stars = [
-    { field: "characterShow", x: imgX + imgW * 0.25, y: imgY + imgH * 0.89, r: 28 },
-    { field: "style",         x: imgX + imgW * 0.35, y: imgY + imgH * 0.89, r: 28 },
-    { field: "program",       x: imgX + imgW * 0.45, y: imgY + imgH * 0.89, r: 28 },
-    { field: "all",           x: imgX + imgW * 0.58, y: imgY + imgH * 0.89, r: 28 }
+    {
+      field: "characterShow",
+      x: imgX + imgW * 0.25,
+      y: imgY + imgH * 0.89,
+      r: 28,
+    },
+    { field: "style", x: imgX + imgW * 0.35, y: imgY + imgH * 0.89, r: 28 },
+    { field: "program", x: imgX + imgW * 0.45, y: imgY + imgH * 0.89, r: 28 },
+    { field: "all", x: imgX + imgW * 0.58, y: imgY + imgH * 0.89, r: 28 },
   ];
 
   // ⭐ DEBUG CIRCLES (delete later)
@@ -129,7 +157,7 @@ function draw() {
   drawColoredPrompt();
 
   // Mouse position (debug)
- // fill(255);
+  // fill(255);
   //textSize(20);
   //text(`${mouseX}, ${mouseY}`, 200, 20);
 }
@@ -148,34 +176,42 @@ function drawColoredPrompt() {
   drawPromptLine(
     [
       { text: "Edit ", color: "#4D3447", bg: null },
-      { text: fields[0].value || "___", color: "#B24155", bg: "#F7F2CF" }
+      { text: fields[0].value || "___", color: "#B24155", bg: "#F7F2CF" },
     ],
-    leftX, y1, maxWidth
+    leftX,
+    y1,
+    maxWidth,
   );
 
   drawPromptLine(
     [
       { text: "from ", color: "#4D3447", bg: null },
-      { text: fields[1].value || "___", color: "#6D6B45", bg: "#FFEFD6" }
+      { text: fields[1].value || "___", color: "#6D6B45", bg: "#FFEFD6" },
     ],
-    leftX, y2, maxWidth
+    leftX,
+    y2,
+    maxWidth,
   );
 
   drawPromptLine(
     [
       { text: "in a ", color: "#4D3447", bg: null },
       { text: fields[2].value || "___", color: "#F3C9E2", bg: "#FDFAFA" },
-      { text: " style", color: "#4D3447", bg: null }
+      { text: " style", color: "#4D3447", bg: null },
     ],
-    leftX, y3, maxWidth
+    leftX,
+    y3,
+    maxWidth,
   );
 
   drawPromptLine(
     [
       { text: "using ", color: "#4D3447", bg: null },
-      { text: fields[3].value || "___", color: "#CC448A", bg: "#FFEFD6" }
+      { text: fields[3].value || "___", color: "#CC448A", bg: "#FFEFD6" },
     ],
-    leftX, y4, maxWidth
+    leftX,
+    y4,
+    maxWidth,
   );
 }
 
@@ -185,15 +221,17 @@ function drawPromptLine(segments, startX, y, maxWidth) {
   let boxHeight = 26;
 
   textSize(24);
-  let widths = segments.map(s => textWidth(s.text) + padding * 2);
-  let totalWidth = widths.reduce((a, b) => a + b, 0) + gap * (segments.length - 1);
+  let widths = segments.map((s) => textWidth(s.text) + padding * 2);
+  let totalWidth =
+    widths.reduce((a, b) => a + b, 0) + gap * (segments.length - 1);
 
   let size = 24;
   while (totalWidth > maxWidth && size > 10) {
     size--;
     textSize(size);
-    widths = segments.map(s => textWidth(s.text) + padding * 2);
-    totalWidth = widths.reduce((a, b) => a + b, 0) + gap * (segments.length - 1);
+    widths = segments.map((s) => textWidth(s.text) + padding * 2);
+    totalWidth =
+      widths.reduce((a, b) => a + b, 0) + gap * (segments.length - 1);
   }
 
   let x = startX;
