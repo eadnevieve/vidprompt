@@ -53,9 +53,10 @@ function draw() {
 
   image(submitImg, imgX, imgY, imgW, imgH);
 
-    textSize(60);
-  text("X: "+mouseX, 0, height/4);
-  text("Y: "+mouseY, 0, height/2);
+ //displays the x and y position of the mouse on the canvas
+fill(255) //white text
+  textSize(20);
+text(`${mouseX}, ${mouseY}`, 200, 20);  
 
   // MENU (top-right)
   textFont("Dareo");
