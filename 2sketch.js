@@ -48,23 +48,24 @@ function setup() {
   textFont(myFont);
 }
 
+function radialGradient(x, y, innerColor, outerColor, radius) {
+  noFill();
+  for (let r = radius; r > 0; r--) {
+    let t = r / radius;
+    let c = lerpColor(outerColor, innerColor, 1 - t);
+    stroke(c);
+    ellipse(x, y, r * 2, r * 2);
+  }
+}
+
 function draw() {
-  background("#C03556");
+ let inner = color("#FFEFD6");
+let outer = color("#CC448A");
 
-  // BACKGROUND IMAGE
-  if (img) {
-let bgW = img.width;
-let bgH = img.height;
+let radius = max(windowWidth, windowHeight);
 
-let scale = min(windowWidth / bgW, windowHeight / bgH);
+radialGradient(width / 2, height / 2, inner, outer, radius);
 
-let newW = bgW * scale;
-let newH = bgH * scale;
-
-let x = (windowWidth - newW) / 2;
-let y = (windowHeight - newH) / 2;
-
-image(img, x, y, newW, newH);
 
   // COORDINATE DEBUG
   fill(255);
