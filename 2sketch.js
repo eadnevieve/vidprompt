@@ -1,13 +1,5 @@
-//GLOBAL VARIABLES ❤️
 let promptImg;
-
-// ⭐ STAR BUTTONS — using relative multipliers
-let stars = [
-  { field: "characterShow", mx: 0.1637, my: 0.9468, r: 28 },
-  { field: "style", mx: 0.2677, my: 0.9553, r: 28 },
-  { field: "program", mx: 0.372, my: 0.9496, r: 28 },
-  { field: "all", mx: 0.474, my: 0.9468, r: 28 },
-];
+let img;
 
 // WORD LISTS
 let words = {
@@ -16,8 +8,9 @@ let words = {
     "Adobe Premiere Pro",
     "CapCut",
     "Alight Motion",
-    "Videostar",
+    "Videostar"
   ],
+
   style: [
     "Velocity",
     "Transition",
@@ -30,9 +23,15 @@ let words = {
     "Flow",
     "Mograph",
     "3D",
-    "Animation",
+    "Animation"
   ],
-  show: ["Avatar: The Last Airbender", "Arcane", "Alice in Borderland"],
+
+  show: [
+    "Avatar: The Last Airbender",
+    "Arcane",
+    "Alice in Borderland"
+  ],
+
   charactersByShow: {
     "Avatar: The Last Airbender": [
       "Aang",
@@ -44,9 +43,10 @@ let words = {
       "Iroh",
       "Suki",
       "Ty Lee",
-      "Mai",
+      "Mai"
     ],
-    Arcane: [
+
+    "Arcane": [
       "Vi",
       "Jinx",
       "Caitlyn",
@@ -56,8 +56,9 @@ let words = {
       "Silco",
       "Mel",
       "Heimerdinger",
-      "Sevika",
+      "Sevika"
     ],
+
     "Alice in Borderland": [
       "Arisu",
       "Usagi",
@@ -68,33 +69,44 @@ let words = {
       "Hatter",
       "Tatta",
       "Ann",
-      "Mira",
-    ],
-  },
+      "Mira"
+    ]
+  }
 };
 
 let myFont;
 let myDont;
 
-// FIELDS
+function preload() {
+    img = loadImage('bgprompt.png'); 
+  myFont = loadFont('Starbim.otf');
+  myDont = loadFont('Dareo.otf');
+  promptImg = loadImage("prompt.png");
+}
+
+// FIELDS variable that holds an array of objects 
 let fields = [
   { label: "character", value: "" },
   { label: "show", value: "" },
   { label: "style", value: "" },
-  { label: "program", value: "" },
+  { label: "program", value: "" }
 ];
-//PRELOAD + SETUP❤️
-function preload() {
-  promptImg = loadImage("prompt.png");
-  myFont = loadFont("Starbim.otf");
-  myDont = loadFont("Dareo.otf");
-}
 
-function setup() {
+// STAR BUTTONS (new roles)
+let stars = [
+  { field: "characterShow", x: 655, y: 470, r: 28 }, // star 1
+  { field: "style",         x: 705, y: 470, r: 28 }, // star 2
+  { field: "program",       x: 755, y: 470, r: 28 }, // star 3
+  { field: "all",           x: 805, y: 470, r: 28 }  // star 4
+];
+
+
+function setup() { 
   createCanvas(windowWidth, windowHeight);
+  // Apply the loaded font
   textFont(myFont);
 }
-//BG Gradient❤️
+
 function radialGradient(x, y, innerColor, outerColor, radius) {
   noFill();
   for (let r = radius; r > 6; r -= 2) {
@@ -104,88 +116,108 @@ function radialGradient(x, y, innerColor, outerColor, radius) {
     ellipse(x, y, r * 2, r * 2);
   }
 }
-//starshape❤️
-function drawStar(x, y, radius, color) {
-  fill(color);
-  noStroke();
-  beginShape();
-  for (let i = 0; i < 10; i++) {
-    let angle = (PI / 5) * i;
-    let r = i % 2 === 0 ? radius : radius / 2;
-    vertex(x + cos(angle) * r, y + sin(angle) * r);
-  }
-  endShape(CLOSE);
+
+function draw() {
+  background("#C03556");
+ let inner = color("#FFEFD6");
+let outer = color("#CC448A");
+
+let radius = max(windowWidth, windowHeight);
+
+radialGradient(width / 2, height / 2, inner, outer, radius);
+
+   
+ // MENU (top-right)
+  textFont("Dareo");
+  textSize(40);
+  fill("#FFEFD6");
+  textAlign(RIGHT, CENTER);
+
+  text("home", width - 40, 60);
+  text("generator", width - 40, 110);
+  text("submit", width - 40, 160);
+  text("resources", width - 40, 210);
+
+
+  // Switch back to Starbim
+  textFont("Starbim");
+
+  // Center prompt PNG
+  let scaleFactor = 0.8;
+  let imgW = promptImg.width * scaleFactor;
+  let imgH = promptImg.height * scaleFactor;
+  let imgX = width / 2 - imgW / 2;
+  let imgY = height / 2 - imgH / 2;
+
+  image(promptImg, imgX, imgY, imgW, imgH);
+
+  drawColoredPrompt();
+  
+ //displays the x and y position of the mouse on the canvas
+fill(255) //white text
+  textSize(20);
+text(`${mouseX}, ${mouseY}`, 200, 20);  
 }
-//Prompt Text functions❤️
-function drawColoredPrompt(imgX, imgY, imgW, imgH) {
-  let leftX = imgX + imgW * 0.15;
-  let rightX = imgX + imgW * 0.5;
+//CENTERING text
+function drawColoredPrompt() {
+  let leftX = 603;
+  let rightX = 864;
   let maxWidth = rightX - leftX;
 
-  let y1 = imgY + imgH * 0.22;
-  let y2 = imgY + imgH * 0.33;
-  let y3 = imgY + imgH * 0.44;
-  let y4 = imgY + imgH * 0.5;
-
+  let y1 = 260;
+  let y2 = 289;
+  let y3 = 318;
+  let y4 = 347;
+//ASSIGNING COLORS
   drawPromptLine(
     [
-      { text: "Edit ", color: "#4D3447" },
-      { text: fields[0].value || "___", color: "#B24155", bg: "#F7F2CF" },
+      { text: "Edit ", color: "#4D3447", bg: null },
+      { text: fields[0].value || "___", color: "#B24155", bg: "#F7F2CF" }
     ],
-    leftX,
-    y1,
-    maxWidth,
+    leftX, y1, maxWidth
   );
 
   drawPromptLine(
     [
-      { text: "from ", color: "#4D3447" },
-      { text: fields[1].value || "___", color: "#6D6B45", bg: "#FFEFD6" },
+      { text: "from ", color: "#4D3447", bg: null },
+      { text: fields[1].value || "___", color: "#6D6B45", bg: "#FFEFD6" }
     ],
-    leftX,
-    y2,
-    maxWidth,
+    leftX, y2, maxWidth
   );
 
   drawPromptLine(
     [
-      { text: "in a ", color: "#4D3447" },
+      { text: "in a ", color: "#4D3447", bg: null },
       { text: fields[2].value || "___", color: "#F3C9E2", bg: "#FDFAFA" },
-      { text: " style", color: "#4D3447" },
+      { text: " style", color: "#4D3447", bg: null }
     ],
-    leftX,
-    y3,
-    maxWidth,
+    leftX, y3, maxWidth
   );
 
   drawPromptLine(
     [
-      { text: "using ", color: "#4D3447" },
-      { text: fields[3].value || "___", color: "#CC448A", bg: "#FFEFD6" },
+      { text: "using ", color: "#4D3447", bg: null },
+      { text: fields[3].value || "___", color: "#CC448A", bg: "#FFEFD6" }
     ],
-    leftX,
-    y4,
-    maxWidth,
+    leftX, y4, maxWidth
   );
 }
-
+//ADDING PADDING
 function drawPromptLine(segments, startX, y, maxWidth) {
   let padding = 4;
   let gap = 4;
   let boxHeight = 26;
 
   textSize(24);
-  let widths = segments.map((s) => textWidth(s.text) + padding * 2);
-  let totalWidth =
-    widths.reduce((a, b) => a + b, 0) + gap * (segments.length - 1);
+  let widths = segments.map(s => textWidth(s.text) + padding * 2);
+  let totalWidth = widths.reduce((a, b) => a + b, 0) + gap * (segments.length - 1);
 
   let size = 24;
   while (totalWidth > maxWidth && size > 10) {
     size--;
     textSize(size);
-    widths = segments.map((s) => textWidth(s.text) + padding * 2);
-    totalWidth =
-      widths.reduce((a, b) => a + b, 0) + gap * (segments.length - 1);
+    widths = segments.map(s => textWidth(s.text) + padding * 2);
+    totalWidth = widths.reduce((a, b) => a + b, 0) + gap * (segments.length - 1);
   }
 
   let x = startX;
@@ -206,91 +238,71 @@ function drawPromptLine(segments, startX, y, maxWidth) {
     x += widths[i] + gap;
   }
 }
-//Missing functions (more)❤️
+
+// CHARACTER button (Auto-updates show)
 function assignCharacterShow() {
-  let shows = Object.keys(words.charactersByShow);
-  let chosenShow = random(shows);
-  let chosenCharacter = random(words.charactersByShow[chosenShow]);
+  let allShows = Object.keys(words.charactersByShow);
+  let chosenShow = random(allShows);
+
+  let list = words.charactersByShow[chosenShow];
+  let chosenCharacter = random(list);
 
   fields[0].value = chosenCharacter;
   fields[1].value = chosenShow;
 }
 
+
+// Style button (auto-updates character)
 function assignStyle() {
-  fields[2].value = random(words.style);
+  let newWord = random(words.style);
+  while (newWord === fields[2].value) newWord = random(words.style);
+  fields[2].value = newWord;
 }
 
+//PROGRAM button
 function assignProgram() {
-  fields[3].value = random(words.program);
+  let newWord = random(words.program);
+  while (newWord === fields[3].value) newWord = random(words.program);
+  fields[3].value = newWord;
 }
 
+//ALL button
 function generateAll() {
   assignCharacterShow();
   assignStyle();
   assignProgram();
 }
-//DRAW LOOP important❤️
-function draw() {
-  background("#C03556");
 
-  // ⭐ RADIAL BACKGROUND
-  let inner = color("#FFEFD6");
-  let outer = color("#CC448A");
-  let radius = max(windowWidth, windowHeight);
-  radialGradient(width / 2, height / 2, inner, outer, radius);
+//CLICKING making it work
 
-  // ⭐ MENU
-  textFont(myDont);
-  textSize(40);
-  fill("#FFEFD6");
-  textAlign(RIGHT, CENTER);
-  text("home", width - 40, 60);
-  text("generator", width - 40, 110);
-  text("submit", width - 40, 160);
+//CLICKING making it work
 
-  // ⭐ Switch back to Starbim
-  textFont("Starbim");
-
-  // ⭐ CENTER PROMPT PNG
-  let scaleFactor = 0.8;
-  let imgW = promptImg.width * scaleFactor;
-  let imgH = promptImg.height * scaleFactor;
-  let imgX = width / 2 - imgW / 2;
-  let imgY = height / 2 - imgH / 2;
-
-  image(promptImg, imgX, imgY, imgW, imgH);
-
-  // ⭐ DRAW STARS USING MULTIPLIERS
-  let colors = ["#B24155", "#F3C9E2", "#CC448A", "#6D6B45"];
-
-  for (let i = 0; i < stars.length; i++) {
-    let s = stars[i];
-    s.x = imgX + imgW * s.mx;
-    s.y = imgY + imgH * s.my;
-    drawStar(s.x, s.y, s.r, colors[i]);
+function mousePressed() {
+  // MENU CLICKS
+  if (mouseX > width - 200 && mouseX < width) {
+    if (mouseY > 40 && mouseY < 80)
+      window.location.href = "index.html";
+    if (mouseY > 90 && mouseY < 130)
+      window.location.href = "2index.html";
+    if (mouseY > 140 && mouseY < 180)
+      window.location.href = "3index.html";
+   if (mouseY > 190 && mouseY < 230)
+      window.location.href = "4index.html";  
   }
 
-  // ⭐ DRAW PROMPT TEXT
-  drawColoredPrompt(imgX, imgY, imgW, imgH);
-
-  // ⭐ FLOATING MOUSE COORDS
-  // fill(255);
-  //textSize(20);
-  //text(`${mouseX}, ${mouseY}`, mouseX + 15, mouseY - 15);
-}
-//CLICKITY CLICK❤️
-function mousePressed() {
+  // STAR button CLICKS
   for (let s of stars) {
     let d = dist(mouseX, mouseY, s.x, s.y);
+
     if (d < s.r) {
       if (s.field === "characterShow") assignCharacterShow();
       else if (s.field === "style") assignStyle();
       else if (s.field === "program") assignProgram();
       else if (s.field === "all") generateAll();
+      
+      
     }
+    
   }
-}
-//REsize❤️
-function windowResized() {
-  resizeCanvas(windowWidth, windowHeight);
+  
 }
