@@ -72,7 +72,7 @@ function positionForm() {
   let leftX = imgX + imgW * 0.12;
   let rightX = imgX + imgW * 0.56;
 
-  let row1Y = imgY + imgH * 0.34;
+  let row1Y = imgY + imgH * 0.22;
   let row2Y = imgY + imgH * 0.60;
 
   let boxW = imgW * 0.30;
@@ -100,7 +100,7 @@ function styleInput(el) {
   el.style("background", "#FBF0F6");
   el.style("border", "none");
   el.style("border-radius", "20px");
-  el.style("padding", "10px");
+  el.style("padding", "20px");
   el.style("font-size", "16px");
 }
 
@@ -128,16 +128,19 @@ function mousePressed() {
   let btnW = imgW * 0.20;
   let btnH = imgH * 0.08;
 
-  if (
-    mouseX > btnX &&
-    mouseX < btnX + btnW &&
-    mouseY > btnY &&
-    mouseY < btnY + btnH
-  ) {
-    console.log("SUBMITTED:");
-    console.log("Name:", nameInput.value());
-    console.log("Email:", emailInput.value());
-    console.log("Category:", categorySelect.value());
-    console.log("Idea:", ideaInput.value());
-  }
+ if (
+  mouseX > btnX &&
+  mouseX < btnX + btnW &&
+  mouseY > btnY &&
+  mouseY < btnY + btnH
+) {
+  // Fill hidden HTML form with p5.js values
+  select("#hName").value(nameInput.value());
+  select("#hEmail").value(emailInput.value());
+  select("#hCategory").value(categorySelect.value());
+  select("#hIdea").value(ideaInput.value());
+
+  // Submit the hidden form
+  document.getElementById("hiddenForm").submit();
+}
 }
