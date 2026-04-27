@@ -13,31 +13,31 @@ function setup() {
   fill("#FBF0F6");
 
   // Assign an input box to nameInput.
-  nameInput = createInput();
-  nameInput.position(width / 2, height / 2);
+  //nameInput = createInput();
+  //nameInput.position(width / 2, height / 2);
 
   // Assign radio buttons to foodRadio.
-  foodRadio = createRadio();
-  foodRadio.position(width / 2, height / 1.5);
+  //foodRadio = createRadio();
+  //foodRadio.position(width / 2, height / 1.5);
 
   // List the radio options for foodRadio, along
   // with the background color associated with each selection.
-  foodRadio.option("#F7F5BC", "Name");
-  foodRadio.option("#B8E3FF", "Email");
-  foodRadio.option("#C79A9A", "Category");
+  //foodRadio.option("#F7F5BC", "Name");
+  //foodRadio.option("#B8E3FF", "Email");
+  //foodRadio.option("#C79A9A", "Category");
 
   // Assign a select dropdown to fontSelect.
-  fontSelect = createSelect();
-  fontSelect.position(width / 4, height / 2);
+  //fontSelect = createSelect();
+  //fontSelect.position(width / 4, height / 2);
 
   // List out the dropdown options for fontSelect.
-  fontSelect.option("Dareo");
-  fontSelect.option("Cursive");
-  fontSelect.option("Boo");
+  //fontSelect.option("Dareo");
+  //fontSelect.option("Cursive");
+  //fontSelect.option("Boo");
 
   // If the fontSelect selection is changed, call the
   // fontChanged function.
-  fontSelect.changed(fontChanged);
+  //fontSelect.changed(fontChanged);
 }
 
 function draw() {
@@ -52,6 +52,10 @@ function draw() {
   let imgY = height / 2 - imgH / 3;
 
   image(submitImg, imgX, imgY, imgW, imgH);
+
+    textSize(60);
+  text("X: "+mouseX, 0, height/4);
+  text("Y: "+mouseY, 0, height/2);
 
   // MENU (top-right)
   textFont("Dareo");
