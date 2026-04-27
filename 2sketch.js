@@ -318,8 +318,11 @@ function mousePressed() {
       else if (s.field === "style") assignStyle();
       else if (s.field === "program") assignProgram();
       else if (s.field === "all") generateAll();
-
-      
     }
+    
   }
+  function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+}
+
 }
