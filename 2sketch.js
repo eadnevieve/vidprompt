@@ -1,4 +1,5 @@
 let promptImg;
+let img;
 
 //make sure starts are accessible to all functions, and not just mousePressed by declaring at the top of your sketch, which makes it 'global' and usable anywhere in the code. This way, you can define the stars array once and use it in both the draw function (to display the stars) and the mousePressed function (to check for clicks on the stars) without any issues.
 let stars = [];
@@ -76,6 +77,7 @@ let myFont;
 let myDont;
 
 function preload() {
+      img = loadImage('bgprompt.svg'); 
   myFont = loadFont("Starbim.otf");
   myDont = loadFont("Dareo.otf");
   promptImg = loadImage("prompt.png");
@@ -105,6 +107,8 @@ function setup() {
 
 function draw() {
   background("#C03556");
+  // Photo bakcground
+  image(img,0, 0,windowWidth, windowHeight);
   fill(255);
 textSize(16);
 text(mouseX + ", " + mouseY, mouseX + 10, mouseY - 10);
