@@ -1,10 +1,1 @@
-/* Hide ALL HTML inputs */
-#hiddenForm input,
-#hiddenForm textarea {
-  display: none;
-}
-
-/* Keep ONLY the submit button visible */
-#realSubmit {
-  display: block;
-}
+d
