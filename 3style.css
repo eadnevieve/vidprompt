@@ -1,12 +1,15 @@
-@font-face {
-  font-family: "Dareo";
-  src: url("Dareo.otf");
+body {
+  margin: 0;
+  overflow: hidden;
 }
 
-#hiddenForm {
-  position: relative;
+/* Hide the HTML inputs so only p5.js inputs show */
+#hiddenForm input,
+#hiddenForm textarea {
+  display: none;
 }
 
+/* Style the visible submit button */
 #realSubmit {
   font-family: Dareo, sans-serif;
   font-size: 28px;
@@ -17,9 +20,9 @@
   border-radius: 20px;
   cursor: pointer;
 
-  /* ⭐ Position it wherever you want */
+  /* Position it over your PNG submit area */
   position: absolute;
-  top: 80%;   /* adjust these two */
+  top: 78%;   /* adjust these two */
   left: 50%;
   transform: translateX(-50%);
 }

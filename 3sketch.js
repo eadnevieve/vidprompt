@@ -11,8 +11,6 @@ function preload() {
 function setup() {
   createCanvas(windowWidth, windowHeight);
 
-  textFont("Dareo");
-
   // P5 INPUTS
   nameInput = createInput();
   emailInput = createInput();
@@ -45,25 +43,14 @@ function draw() {
 
   positionForm();
 
-  // Title (no name echo)
+  // Title
   textAlign(CENTER);
   textSize(60);
   fill("#FDFAFA");
   textFont("Starbim");
   text(`SUBMIT PLS,<3`, width / 2, height / 7);
 
-  // Menu
-  textFont("Dareo");
-  textSize(40);
-  fill("#FFEFD6");
-  textAlign(RIGHT, CENTER);
-
-  text("home", width - 40, 60);
-  text("generator", width - 40, 110);
-  text("submit", width - 40, 160);
-  text("resources", width - 40, 210);
-
-  // Compute submit button area for p5 click
+  // Compute submit button area
   btnX = imgX + imgW * 0.60;
   btnY = imgY + imgH * 0.78;
   btnW = imgW * 0.20;
@@ -74,7 +61,7 @@ function positionForm() {
   let leftX = imgX + imgW * 0.12;
   let rightX = imgX + imgW * 0.56;
 
-  let row1Y = imgY + imgH * 0.25; // moved down
+  let row1Y = imgY + imgH * 0.25;
   let row2Y = imgY + imgH * 0.60;
 
   let boxW = imgW * 0.30;
@@ -102,14 +89,6 @@ function styleInput(el) {
 }
 
 function mousePressed() {
-  // Menu
-  if (mouseX > width - 200 && mouseX < width) {
-    if (mouseY > 40 && mouseY < 80) window.location.href = "index.html";
-    if (mouseY > 90 && mouseY < 130) window.location.href = "2index.html";
-    if (mouseY > 140 && mouseY < 180) window.location.href = "3index.html";
-    if (mouseY > 190 && mouseY < 230) window.location.href = "4index.html";
-  }
-
   // Submit click
   if (
     mouseX > btnX &&
@@ -117,13 +96,11 @@ function mousePressed() {
     mouseY > btnY &&
     mouseY < btnY + btnH
   ) {
-    // Fill hidden HTML form
     document.getElementById("hName").value = nameInput.value();
     document.getElementById("hEmail").value = emailInput.value();
     document.getElementById("hCategory").value = categorySelect.value();
     document.getElementById("hIdea").value = ideaInput.value();
 
-    // Trigger HTML submit
     document.getElementById("realSubmit").click();
   }
 }
