@@ -1,0 +1,20 @@
+/* Hide ALL HTML inputs */
+#hiddenForm input,
+#hiddenForm textarea {
+  display: none;
+}
+
+/* Keep ONLY the submit button visible */
+#realSubmit {
+  display: block;
+}
+#realSubmit {
+  position: absolute;
+  top: 78%;   /* adjust to match your PNG */
+  left: 50%;
+  transform: translateX(-50%);
+
+  font-family: Dareo, sans-serif;
+  font-size: 28px;
+
+}
