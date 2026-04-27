@@ -127,10 +127,7 @@ function draw() {
 
   image(promptImg, imgX, imgY, imgW, imgH);
 
-  //displays the x and y position of the mouse on the canvas
-  fill(255); //white text
-  textSize(20);
-  text(`${mouseX}, ${mouseY}`, 200, 20);
+  
 
   fill(255);
   textSize(20);
