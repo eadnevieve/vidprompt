@@ -473,6 +473,20 @@ function draw() {
   drawSidebar();
   drawMainPanel();
   updateLinkPositions();
+  
+  // MENU (top-right)
+  textFont(myFont);
+  textSize(40);
+  fill("#4D3447");
+  textAlign(RIGHT, CENTER);
+
+  text("home", width - 40, 60);
+  text("generator", width - 40, 110);
+  text("submit", width - 40, 160);
+  text("resources", width - 40, 210);
+
+  textFont(myFont);
+
 }
 
 // =========================
@@ -592,6 +606,18 @@ function mousePressed() {
     if (index >= 0 && index < sidebarItems.length) {
       selectedCategory = sidebarItems[index];
       mainScroll = 0;
+      
+  // MENU CLICKS
+  if (mouseX > width - 200 && mouseX < width) {
+    if (mouseY > 40 && mouseY < 80)
+      window.location.href = "index.html";
+    if (mouseY > 90 && mouseY < 130)
+      window.location.href = "2index.html";
+    if (mouseY > 140 && mouseY < 180)
+      window.location.href = "3index.html";
+   if (mouseY > 190 && mouseY < 230)
+      window.location.href = "4index.html";  
+  }
     }
   }
 }
