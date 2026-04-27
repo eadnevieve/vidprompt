@@ -105,6 +105,10 @@ function setup() {
 
 function draw() {
   background("#C03556");
+  fill(255);
+textSize(16);
+text(mouseX + ", " + mouseY, mouseX + 10, mouseY - 10);
+
 
   // MENU (top-right)
   textFont(myDont);
