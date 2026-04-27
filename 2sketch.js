@@ -144,6 +144,12 @@ function draw() {
 
   //This callus up the function into draw with the imgX, imgY, imgW, and imgH parameters that are used to calculate the position and size of the prompt area, ensuring that the text is properly aligned within the image.
   drawColoredPrompt(imgX, imgY, imgW, imgH);
+  for (let s of stars) {
+  fill("yellow");
+  noStroke();
+  circle(s.x, s.y, s.r * 2);
+}
+
 }
 //CENTERING text
 // the imgX, imgY, imgW, and imgH parameters are used to calculate the position and size of the prompt area, ensuring that the text is properly aligned within the image.
@@ -313,8 +319,7 @@ function mousePressed() {
       else if (s.field === "program") assignProgram();
       else if (s.field === "all") generateAll();
 
-      fill("red");
-
+      
     }
   }
 }
