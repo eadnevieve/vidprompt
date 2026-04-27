@@ -56,8 +56,18 @@ function radialGradient(x, y, innerColor, outerColor, radius) {
   }
 }
 
+// STAR BUTTONS (now relative multipliers)
+let stars = [
+  { field: "characterShow", mx: 0.1637, my: 0.9468, r: 28 },
+  { field: "style",         mx: 0.2677, my: 0.9553, r: 28 },
+  { field: "program",       mx: 0.3720, my: 0.9496, r: 28 },
+  { field: "all",           mx: 0.4740, my: 0.9468, r: 28 }
+];
+
 function draw() {
-  // RADIAL BACKGROUND
+  background("#C03556");
+
+  // gradient
   let inner = color("#FFEFD6");
   let outer = color("#CC448A");
   let radius = max(windowWidth, windowHeight);
@@ -75,7 +85,7 @@ function draw() {
   // Switch back to Starbim
   textFont("Starbim");
 
-  // CENTER PROMPT PNG
+  // Center prompt PNG
   let scaleFactor = 0.8;
   let imgW = promptImg.width * scaleFactor;
   let imgH = promptImg.height * scaleFactor;
@@ -84,35 +94,27 @@ function draw() {
 
   image(promptImg, imgX, imgY, imgW, imgH);
 
-  // ⭐ FINAL STAR POSITIONS USING RELATIVE MULTIPLIERS
-  stars = [
-    { field: "characterShow", x: imgX + imgW * 0.1637, y: imgY + imgH * 0.9468, r: 28 },
-    { field: "style",         x: imgX + imgW * 0.2677, y: imgY + imgH * 0.9553, r: 28 },
-    { field: "program",       x: imgX + imgW * 0.3720, y: imgY + imgH * 0.9496, r: 28 },
-    { field: "all",           x: imgX + imgW * 0.4740, y: imgY + imgH * 0.9468, r: 28 }
-  ];
-
-  // DRAW STAR SHAPES
+  // ⭐ APPLY RELATIVE STAR POSITIONS
   let colors = ["#B24155", "#F3C9E2", "#CC448A", "#6D6B45"];
+
   for (let i = 0; i < stars.length; i++) {
     let s = stars[i];
+
+    // convert multipliers → actual coordinates
+    s.x = imgX + imgW * s.mx;
+    s.y = imgY + imgH * s.my;
+
     drawStar(s.x, s.y, s.r, colors[i]);
   }
 
-  // DRAW PROMPT TEXT
-  drawColoredPrompt(imgX, imgY, imgW, imgH);
+  drawColoredPrompt();
 
-  // ⭐ DEBUG TEXT — ALWAYS LAST
+  // floating mouse coords
   fill(255);
   textSize(20);
-  text(`imgX: ${imgX}`, 20, 40);
-  text(`imgY: ${imgY}`, 20, 70);
-  text(`imgW: ${imgW}`, 20, 100);
-  text(`imgH: ${imgH}`, 20, 130);
-
-  // ⭐ FLOATING MOUSE COORDS
   text(`${mouseX}, ${mouseY}`, mouseX + 15, mouseY - 15);
 }
+
 
 // ---------------------- STAR SHAPE ----------------------
 function drawStar(x, y, radius, color) {
