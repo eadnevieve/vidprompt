@@ -41,8 +41,8 @@
 /* Category row */
 .row.mid {
   position: absolute;
-  top: 225px;             /* bottom-left tan box */
-  left: 60px;
+  top: 600px;             /* bottom-left tan box */
+  left: 100px;
   width: 100%;
 }
 
