@@ -1,1 +1,10 @@
-d
+/* Hide ALL h t m l inputs */
+#hiddenForm input,
+#hiddenForm textarea {
+  display: none;
+}
+
+/*  ONLY  submit button  */
+#realSubmit {
+  display: block;
+}
