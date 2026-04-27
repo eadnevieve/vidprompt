@@ -16,5 +16,10 @@
 
   font-family: Dareo, sans-serif;
   font-size: 28px;
-
+  background: #CC448A;
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 20px;
+  cursor: pointer;
 }
