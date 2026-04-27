@@ -149,7 +149,7 @@ let btnH = imgH * 0.10;
   select("#hIdea").value(ideaInput.value());
 
   // Submit the hidden form
-  document.getElementById("hiddenForm").submit();
+document.getElementById("realSubmit").click();
    
   if (clickedSubmitButton) {
     submittedName = nameInput.value();
