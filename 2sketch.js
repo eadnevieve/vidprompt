@@ -127,15 +127,14 @@ function draw() {
 
   image(promptImg, imgX, imgY, imgW, imgH);
 
-  // ⭐ FINAL STAR POSITIONS (TEMPORARY ABSOLUTE)
+  // ⭐ DRAW STARS (TEMPORARY ABSOLUTE)
   stars = [
-    { field: "characterShow", x: 638, y: 497, r: 28 },
-    { field: "style",         x: 694, y: 296, r: 28 },
-    { field: "program",       x: 747, y: 497, r: 28 },
-    { field: "all",           x: 805, y: 493, r: 28 }
+    { field: "characterShow", x: 613, y: 523, r: 28 },
+    { field: "style",         x: 661, y: 526, r: 28 },
+    { field: "program",       x: 709, y: 524, r: 28 },
+    { field: "all",           x: 756, y: 523, r: 28 }
   ];
 
-  // DRAW STAR SHAPES
   let colors = ["#B24155", "#F3C9E2", "#CC448A", "#6D6B45"];
   for (let i = 0; i < stars.length; i++) {
     let s = stars[i];
@@ -145,7 +144,7 @@ function draw() {
   // DRAW PROMPT TEXT
   drawColoredPrompt(imgX, imgY, imgW, imgH);
 
-  // ⭐ DEBUG TEXT — ALWAYS DRAWN LAST
+  // ⭐ DEBUG TEXT — ALWAYS LAST
   fill(255);
   textSize(20);
   text(`imgX: ${imgX}`, 20, 40);
@@ -153,9 +152,10 @@ function draw() {
   text(`imgW: ${imgW}`, 20, 100);
   text(`imgH: ${imgH}`, 20, 130);
 
-  // ⭐ MOUSE COORDINATES — FLOATING
+  // ⭐ FLOATING MOUSE COORDS
   text(`${mouseX}, ${mouseY}`, mouseX + 15, mouseY - 15);
 }
+
 
 
 // ---------------------- STAR SHAPE ----------------------
