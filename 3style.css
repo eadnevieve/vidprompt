@@ -8,18 +8,3 @@
 #realSubmit {
   display: block;
 }
-#realSubmit {
-  position: absolute;
-  top: 78%;   /* adjust to match your PNG */
-  left: 50%;
-  transform: translateX(-50%);
-
-  font-family: Dareo, sans-serif;
-  font-size: 28px;
-  background: #CC448A;
-  color: white;
-  border: none;
-  padding: 14px 28px;
-  border-radius: 20px;
-  cursor: pointer;
-}
