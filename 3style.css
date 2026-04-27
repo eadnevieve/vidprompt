@@ -1,45 +1,72 @@
 .form-wrapper {
   position: relative;
-  width: 650px;
+  width: 900px; /* closer to your PNG proportions */
   margin: 0 auto;
-  margin-top: 0px;   /* was 40 / 120 – now at the very top */
+}
+
+.form-bg {
+  width: 100%;
+  display: block;
 }
 
 #submitForm {
   position: absolute;
-  top: 0px;          /* make sure this has px */
-  left: 0px;
+  top: 0;
+  left: 0;
   width: 100%;
-  box-sizing: border-box;
-  padding: 0;
 }
 
+/* TOP ROW (Name + Email) */
 .row.top {
   position: absolute;
-  top: 40px;         /* was ~95px */
-  left: 60px;
-  width: calc(100% - 120px);
+  top: 90px;
+  left: 90px;
+  width: calc(100% - 180px);
   display: flex;
   justify-content: space-between;
+  gap: 40px;
 }
 
+.row.top .left,
+.row.top .right {
+  width: 50%;
+}
+
+/* CATEGORY (bottom left) */
 .row.mid {
   position: absolute;
-  top: 120px;        /* was ~185px */
-  left: 60px;
-  width: 48%;
+  top: 240px;
+  left: 90px;
+  width: 40%;
 }
 
+/* IDEA (bottom right) */
 .row.idea {
   position: absolute;
-  top: 210px;        /* was ~275px */
-  left: 60px;
-  width: calc(100% - 120px);
+  top: 240px;
+  right: 90px;
+  width: 40%;
 }
 
+/* SUBMIT BUTTON */
 .submit-btn {
   position: absolute;
-  top: 390px;        /* was ~470px */
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: 50px;
+  right: 120px;
+}
+
+input, select, textarea {
+  width: 100%;
+  border-radius: 20px;
+  border: none;
+  padding: 15px;
+  background: #E9E6DD;
+  font-size: 16px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  color: white;
+  font-size: 20px;
 }
