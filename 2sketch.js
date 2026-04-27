@@ -130,18 +130,19 @@ function draw() {
 
   // STAR HITBOXES
   stars = [
-    { field: "characterShow", x: imgX + imgW * 0.35, y: imgY + imgH * 0.82, r: 28 },
-    { field: "style",         x: imgX + imgW * 0.42, y: imgY + imgH * 0.82, r: 28 },
-    { field: "program",       x: imgX + imgW * 0.50, y: imgY + imgH * 0.82, r: 28 },
-    { field: "all",           x: imgX + imgW * 0.58, y: imgY + imgH * 0.82, r: 28 }
-  ];
+  { field: "characterShow", x: imgX + imgW * 0.375, y: imgY + imgH * 0.825, r: 28 },
+  { field: "style",         x: imgX + imgW * 0.445, y: imgY + imgH * 0.825, r: 28 },
+  { field: "program",       x: imgX + imgW * 0.515, y: imgY + imgH * 0.825, r: 28 },
+  { field: "all",           x: imgX + imgW * 0.585, y: imgY + imgH * 0.825, r: 28 }
+];
+
 
   // DEBUG: show star hitboxes
   for (let s of stars) {
-    fill("rgba(255, 255, 0, 0.5)");
-    noStroke();
-    circle(s.x, s.y, s.r * 2);
-  }
+  fill("rgba(255, 255, 0, 0.5)");
+  noStroke();
+  circle(s.x, s.y, s.r * 2);
+}
 
   // DRAW THE PROMPT TEXT
   drawColoredPrompt(imgX, imgY, imgW, imgH);
@@ -304,7 +305,7 @@ function mousePressed() {
   console.log("clicked at:", mouseX, mouseY);
   console.log(
     "stars:",
-    stars.map((s) => `${s.field}: (${Math.round(s.x)}, ${Math.round(s.y)})`),
+    stars.map((s) => `${s.field}: (${Math.round(s.x)}, ${Math.round(s.y)})`)
   );
 
   for (let s of stars) {
@@ -315,10 +316,8 @@ function mousePressed() {
       else if (s.field === "program") assignProgram();
       else if (s.field === "all") generateAll();
     }
-    
   }
-  function windowResized() {
-  resizeCanvas(windowWidth, windowHeight);
 }
-
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
 }
