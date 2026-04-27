@@ -1,0 +1,43 @@
+#submitForm {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 400px;
+
+  background: #C03556;
+  padding: 30px;
+  border-radius: 20px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  font-family: 'Dareo', sans-serif;
+  color: #FFEFD6;
+}
+
+#submitForm input,
+#submitForm select,
+#submitForm textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+}
+
+#submitForm button {
+  padding: 12px;
+  background: #FFEFD6;
+  color: #C03556;
+  border: none;
+  border-radius: 12px;
+  font-size: 20px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#submitForm button:hover {
+  background: #fff3d0;
+}

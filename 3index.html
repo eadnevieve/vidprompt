@@ -11,8 +11,35 @@
     <script src="libraries/p5.min.js"></script>
     <script src="libraries/p5.sound.min.js"></script>
   </head>
-  <script src="3sketch.js"></script>
-  
+
+  <body>
+
+    <!-- ⭐ REAL SUBMISSION FORM (HTML, not p5) -->
+    <form id="submitForm" action="https://formspree.io/f/meevwldn" method="POST">
+
+      <label>Name*</label>
+      <input type="text" name="name" required>
+
+      <label>Email*</label>
+      <input type="email" name="email" required>
+
+      <label>Category*</label>
+      <select name="category" required>
+        <option value="">Select one</option>
+        <option value="Name">Name</option>
+        <option value="Email">Email</option>
+        <option value="Category">Category</option>
+      </select>
+
+      <label>Idea*</label>
+      <textarea name="idea" rows="5" required></textarea>
+
+      <button type="submit">SUBMIT</button>
+
+    </form>
+
+    <!-- ⭐ Your p5.js sketch -->
+    <script src="3sketch.js"></script>
+
+  </body>
 </html>
-
-
