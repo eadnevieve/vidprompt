@@ -1,28 +1,25 @@
-body {
-  margin: 0;
-  overflow: hidden;
-}
-
-/* Hide the HTML inputs so only p5.js inputs show */
+/* Hide ALL HTML inputs */
 #hiddenForm input,
 #hiddenForm textarea {
   display: none;
 }
 
-/* Style the visible submit button */
+/* Keep ONLY the submit button visible */
 #realSubmit {
+  display: block;
+}
+#realSubmit {
+  position: absolute;
+  top: 78%;   /* adjust to match your PNG */
+  left: 50%;
+  transform: translateX(-50%);
+
   font-family: Dareo, sans-serif;
   font-size: 28px;
   background: #CC448A;
   color: white;
   border: none;
-  padding: 1px 2px;
+  padding: 14px 28px;
   border-radius: 20px;
   cursor: pointer;
-
-  /* Position it over your PNG submit area */
-  position: absolute;
-  top: 78%;   /* adjust these two */
-  left: 50%;
-  transform: translateX(-50%);
 }
