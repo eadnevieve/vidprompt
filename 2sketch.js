@@ -77,7 +77,7 @@ let myFont;
 let myDont;
 
 function preload() {
-      img = loadImage('bgprompt.svg'); 
+      img = loadImage('bgprompt.png'); 
   myFont = loadFont("Starbim.otf");
   myDont = loadFont("Dareo.otf");
   promptImg = loadImage("prompt.png");
