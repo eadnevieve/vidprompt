@@ -30,7 +30,7 @@ let myFont;
 let myDont;
 
 function preload() {
-  img = loadImage("bgprompt.png");   // background
+  img = loadImage("img/bgprompt.png"); // background
   promptImg = loadImage("prompt.png"); // TV frame
   myFont = loadFont("Starbim.otf");
   myDont = loadFont("Dareo.otf");
