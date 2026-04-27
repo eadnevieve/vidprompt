@@ -8,7 +8,7 @@ let words = {
     "Adobe Premiere Pro",
     "CapCut",
     "Alight Motion",
-    "Videostar",
+    "Videostar"
   ],
 
   style: [
@@ -29,7 +29,7 @@ let myFont;
 let myDont;
 
 function preload() {
-  promptImg = loadImage("prompt.png"); // TV frame
+  promptImg = loadImage("prompt.png");
   myFont = loadFont("Starbim.otf");
   myDont = loadFont("Dareo.otf");
 }
@@ -38,7 +38,7 @@ let fields = [
   { label: "character", value: "" },
   { label: "show", value: "" },
   { label: "style", value: "" },
-  { label: "program", value: "" },
+  { label: "program", value: "" }
 ];
 
 function setup() {
@@ -48,7 +48,7 @@ function setup() {
 
 function radialGradient(x, y, innerColor, outerColor, radius) {
   noFill();
-for (let r = radius; r > 6; r -= 2) {
+  for (let r = radius; r > 6; r -= 2) {
     let t = r / radius;
     let c = lerpColor(outerColor, innerColor, 1 - t);
     stroke(c);
@@ -57,18 +57,11 @@ for (let r = radius; r > 6; r -= 2) {
 }
 
 function draw() {
- let inner = color("#FFEFD6");
-let outer = color("#CC448A");
-
-let radius = max(windowWidth, windowHeight);
-
-radialGradient(width / 2, height / 2, inner, outer, radius);
-
-
-  // COORDINATE DEBUG
-  fill(255);
-  textSize(16);
-  text(mouseX + ", " + mouseY, mouseX + 10, mouseY - 10);
+  // RADIAL BACKGROUND
+  let inner = color("#FFEFD6");
+  let outer = color("#CC448A");
+  let radius = max(windowWidth, windowHeight);
+  radialGradient(width / 2, height / 2, inner, outer, radius);
 
   // MENU
   textFont(myDont);
@@ -91,7 +84,7 @@ radialGradient(width / 2, height / 2, inner, outer, radius);
 
   image(promptImg, imgX, imgY, imgW, imgH);
 
-  // STAR HITBOXES
+  // RELATIVE STAR POSITIONS (WORKS EVERYWHERE)
   stars = [
     { field: "characterShow", x: imgX + imgW * 0.375, y: imgY + imgH * 0.825, r: 28 },
     { field: "style",         x: imgX + imgW * 0.445, y: imgY + imgH * 0.825, r: 28 },
