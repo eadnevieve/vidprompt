@@ -312,6 +312,9 @@ function mousePressed() {
       else if (s.field === "style") assignStyle();
       else if (s.field === "program") assignProgram();
       else if (s.field === "all") generateAll();
+
+            image(promptImg, imgX, imgY, imgW, imgH);
+
     }
   }
 }
