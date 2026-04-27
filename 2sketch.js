@@ -105,12 +105,13 @@ text(`${mouseX}, ${mouseY}`, 200, 20);
   let extraSpacing = halfInch; // 0.5 inch between stars
 
   // ⭐ FINAL STAR POSITIONS
-  stars = [
-    { field: "characterShow", x: baseX + shiftLeft,                     y: baseY + shiftDown, r: 28 },
-    { field: "style",         x: baseX + shiftLeft + extraSpacing,      y: baseY + shiftDown, r: 28 },
-    { field: "program",       x: baseX + shiftLeft + extraSpacing * 2,  y: baseY + shiftDown, r: 28 },
-    { field: "all",           x: baseX + shiftLeft + extraSpacing * 3,  y: baseY + shiftDown, r: 28 }
-  ];
+stars = [
+  { field: "characterShow", x: 638, y: 497, r: 28 },
+  { field: "style",         x: 694, y: 296, r: 28 },
+  { field: "program",       x: 747, y: 497, r: 28 },
+  { field: "all",           x: 805, y: 493, r: 28 }
+];
+
 
   // DRAW STAR SHAPES
   let colors = ["#B24155", "#F3C9E2", "#CC448A", "#6D6B45"];
