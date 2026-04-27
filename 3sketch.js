@@ -12,9 +12,9 @@ function setup() {
   background('#C03556');
     fill('#FBF0F6');
 
-  // Assign an input box to nameInput.
+  // Name.
   nameInput = createInput();
-  nameInput.position(width / 2, height / 2);
+  nameInput.position(729, 335, 300, 200);
 
   // Assign radio buttons to foodRadio.
   foodRadio = createRadio();
