@@ -1,5 +1,11 @@
 let promptImg;
-let stars = [];
+// ⭐ STAR BUTTONS — using relative multipliers
+let stars = [
+  { field: "characterShow", mx: 0.1637, my: 0.9468, r: 28 },
+  { field: "style",         mx: 0.2677, my: 0.9553, r: 28 },
+  { field: "program",       mx: 0.3720, my: 0.9496, r: 28 },
+  { field: "all",           mx: 0.4740, my: 0.9468, r: 28 }
+];
 
 // WORD LISTS
 let words = {
@@ -123,6 +129,7 @@ function drawColoredPrompt(imgX, imgY, imgW, imgH) {
   let y3 = imgY + imgH * 0.44;
   let y4 = imgY + imgH * 0.5;
 
+  
   drawPromptLine(
     [
       { text: "Edit ", color: "#4D3447" },
@@ -203,10 +210,64 @@ function drawPromptLine(segments, startX, y, maxWidth) {
   }
 }
 
+function draw() {
+  background("#C03556");
+
+  // ⭐ RADIAL BACKGROUND
+  let inner = color("#FFEFD6");
+  let outer = color("#CC448A");
+  let radius = max(windowWidth, windowHeight);
+  radialGradient(width / 2, height / 2, inner, outer, radius);
+
+  // ⭐ MENU (top-right)
+  textFont(myDont);
+  textSize(40);
+  fill("#FFEFD6");
+  textAlign(RIGHT, CENTER);
+  text("home", width - 40, 60);
+  text("generator", width - 40, 110);
+  text("submit", width - 40, 160);
+
+  // ⭐ Switch back to Starbim
+  textFont("Starbim");
+
+  // ⭐ CENTER PROMPT PNG
+  let scaleFactor = 0.8;
+  let imgW = promptImg.width * scaleFactor;
+  let imgH = promptImg.height * scaleFactor;
+  let imgX = width / 2 - imgW / 2;
+  let imgY = height / 2 - imgH / 2;
+
+  image(promptImg, imgX, imgY, imgW, imgH);
+
+  // ⭐ DRAW STARS USING RELATIVE MULTIPLIERS
+  let colors = ["#B24155", "#F3C9E2", "#CC448A", "#6D6B45"];
+
+  for (let i = 0; i < stars.length; i++) {
+    let s = stars[i];
+
+    // convert multipliers → actual coordinates
+    s.x = imgX + imgW * s.mx;
+    s.y = imgY + imgH * s.my;
+
+    drawStar(s.x, s.y, s.r, colors[i]);
+  }
+
+  // ⭐ DRAW PROMPT TEXT
+  drawColoredPrompt(imgX, imgY, imgW, imgH);
+
+  // ⭐ FLOATING MOUSE COORDS
+  fill(255);
+  textSize(20);
+  text(`${mouseX}, ${mouseY}`, mouseX + 15, mouseY - 15);
+}
+
 // ---------------------- CLICK HANDLING ----------------------
 function mousePressed() {
-  for (let s of stars) {
-    let d = dist(mouseX, mouseY, s.x, s.y);
+  // STAR button CLICKS
+for (let s of stars) {
+  let d = dist(mouseX, mouseY, s.x, s.y);
+
     if (d < s.r) {
       if (s.field === "characterShow") assignCharacterShow();
       else if (s.field === "style") assignStyle();
