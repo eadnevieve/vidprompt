@@ -1,7 +1,7 @@
 .form-wrapper {
   position: relative;
-  width: 600px;       /* adjust to match your PNG */
-  margin: 100px auto; /* centers the form on the page */
+  width: 650px;          /* match your PNG width */
+  margin: 100px auto;    /* center on page */
 }
 
 .form-bg {
@@ -11,20 +11,51 @@
 
 #submitForm {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 40px;      /* adjust to match your PNG layout */
+  top: 40px;             /* move whole form UP/DOWN */
+  left: 40px;            /* move whole form LEFT/RIGHT */
+  width: calc(100% - 80px);
   box-sizing: border-box;
+  font-family: Dareo, sans-serif;
 }
 
+/* Two-column layout for name + email */
+.row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.left, .right {
+  width: 48%;
+}
+
+/* Inputs */
 #submitForm input,
 #submitForm select,
 #submitForm textarea {
   width: 100%;
-  margin-bottom: 15px;
-  padding: 10px;
-  border-radius: 8px;
+  padding: 12px;
+  margin-top: 5px;
+  border-radius: 10px;
   border: none;
   font-size: 18px;
+  background: #fff;
+}
+
+/* Idea box full width */
+#submitForm textarea {
+  width: 100%;
+  margin-top: 10px;
+}
+
+/* Submit button */
+#submitForm button {
+  margin-top: 20px;
+  padding: 12px 20px;
+  background: #CC448A;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 20px;
+  cursor: pointer;
 }

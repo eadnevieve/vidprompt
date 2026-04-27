@@ -1,48 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<div class="form-wrapper">
+  <img src="submit.png" class="form-bg">
 
-  <title>Video Prompt Generator</title>
-  <link rel="icon" type="image/x-icon" href="favicon.png">
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <form id="submitForm" action="https://formspree.io/f/meevwldn" method="POST">
 
-  <!-- p5.js libraries -->
-  <script src="libraries/p5.min.js"></script>
-  <script src="libraries/p5.sound.min.js"></script>
-</head>
+    <div class="row">
+      <div class="left">
+        <label>Name*</label>
+        <input type="text" name="name" required>
+      </div>
 
-<body>
+      <div class="right">
+        <label>Email*</label>
+        <input type="email" name="email" required>
+      </div>
+    </div>
 
-  <!-- ⭐ FORM + PNG WRAPPER -->
-  <div class="form-wrapper">
-    <img src="submit.png" class="form-bg">
+    <div class="row">
+      <div class="left">
+        <label>Category*</label>
+        <select name="category" required>
+          <option value="">Select one</option>
+          <option value="Character">Character</option>
+          <option value="Show">Show</option>
+          <option value="Style">Style</option>
+          <option value="Program">Program</option>
+        </select>
+      </div>
+    </div>
 
-    <form id="submitForm" action="https://formspree.io/f/meevwldn" method="POST">
-      <label>Name*</label>
-      <input type="text" name="name" required>
+    <label>Idea*</label>
+    <textarea name="idea" rows="5" required></textarea>
 
-      <label>Email*</label>
-      <input type="email" name="email" required>
+    <button type="submit">SUBMIT</button>
 
-      <label>Category*</label>
-      <select name="category" required>
-        <option value="">Select one</option>
-        <option value="Name">Name</option>
-        <option value="Email">Email</option>
-        <option value="Category">Category</option>
-      </select>
-
-      <label>Idea*</label>
-      <textarea name="idea" rows="5" required></textarea>
-
-      <button type="submit">SUBMIT</button>
-    </form>
-  </div>
-
-  <!-- ⭐ Your p5.js sketch STILL runs -->
-  <script src="3sketch.js"></script>
-
-</body>
-</html>
+  </form>
+</div>
