@@ -15,8 +15,8 @@
 /* Position the form ON TOP of the PNG */
 #submitForm {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 20;
+  left: 40;
   width: 100%;
   box-sizing: border-box;
   padding: 0;
