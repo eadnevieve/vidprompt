@@ -165,6 +165,11 @@ function draw() {
   for (let i = 0; i < stars.length; i++) {
     let s = stars[i];
     drawStar(s.x, s.y, s.r, colors[i]);
+    // ⭐ DRAW COORDINATES LAST — always visible
+fill(255);
+textSize(20);
+text(`${mouseX}, ${mouseY}`, mouseX + 15, mouseY - 15);
+
   }
 
   // DRAW PROMPT TEXT
