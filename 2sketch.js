@@ -53,8 +53,15 @@ function draw() {
 
   // BACKGROUND IMAGE
   if (img) {
-    image(img, 0, 0, windowWidth, windowHeight);
-  }
+let bgW = img.width;
+let bgH = img.height;
+
+let scale = max(windowWidth / bgW, windowHeight / bgH);
+
+let newW = bgW * scale;
+let newH = bgH * scale;
+
+image(img, 0, 0, newW, newH);  }
 
   // COORDINATE DEBUG
   fill(255);
