@@ -1,82 +1,45 @@
-/* Center the whole form + PNG */
 .form-wrapper {
   position: relative;
   width: 650px;
   margin: 0 auto;
-  margin-top: 40px;
+  margin-top: 0px;   /* was 40 / 120 – now at the very top */
 }
 
-/* PNG background */
-.form-bg {
-  width: 100%;
-  display: block;
-}
-
-/* Position the form ON TOP of the PNG */
 #submitForm {
   position: absolute;
-  top: 0px;
+  top: 0px;          /* make sure this has px */
   left: 0px;
   width: 100%;
   box-sizing: border-box;
   padding: 0;
-  font-family: Dareo, sans-serif;
 }
 
-/* Name + Email row */
 .row.top {
   position: absolute;
-  top: 95px;          /* aligns with top tan boxes */
+  top: 40px;         /* was ~95px */
   left: 60px;
   width: calc(100% - 120px);
   display: flex;
   justify-content: space-between;
 }
 
-.row.top .left,
-.row.top .right {
-  width: 48%;
-}
-
-/* Category row */
 .row.mid {
   position: absolute;
-  top: 185px;         /* aligns with second tan box */
+  top: 120px;        /* was ~185px */
   left: 60px;
   width: 48%;
 }
 
-/* Idea box */
 .row.idea {
   position: absolute;
-  top: 275px;         /* aligns with large tan box */
+  top: 210px;        /* was ~275px */
   left: 60px;
   width: calc(100% - 120px);
 }
 
-/* Submit button */
 .submit-btn {
   position: absolute;
-  top: 470px;         /* aligns with submit area */
+  top: 390px;        /* was ~470px */
   left: 50%;
   transform: translateX(-50%);
-  padding: 12px 24px;
-  background: #CC448A;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  font-size: 22px;
-  cursor: pointer;
-}
-
-/* Input styling */
-#submitForm input,
-#submitForm select,
-#submitForm textarea {
-  width: 100%;
-  padding: 12px;
-  border-radius: 10px;
-  border: none;
-  font-size: 18px;
-  background: #FFF7E0; /* matches tan boxes */
 }
