@@ -150,13 +150,13 @@ function draw() {
     drawStar(s.x, s.y, s.r, colors[i]);
   }
 
-  //drawColoredPrompt();
+  drawColoredPrompt();
 
   // floating mouse coords
-  //fill(255);
-  //textSize(20);
-  //text(`${mouseX}, ${mouseY}`, mouseX + 15, mouseY - 15);
-//}
+  fill(255);
+  textSize(20);
+  text(`${mouseX}, ${mouseY}`, mouseX + 15, mouseY - 15);
+}
 
 // ---------------------- STAR SHAPE ----------------------
 function drawStar(x, y, radius, color) {
