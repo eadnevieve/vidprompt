@@ -12,17 +12,60 @@ let words = {
   ],
 
   style: [
-    "Velocity", "Transition", "Juug", "Soft-style", "Candy",
-    "Trailer", "Clip", "Lyric", "Flow", "Mograph", "3D", "Animation"
+    "Velocity",
+    "Transition",
+    "Juug",
+    "Soft-style",
+    "Candy",
+    "Trailer",
+    "Clip",
+    "Lyric",
+    "Flow",
+    "Mograph",
+    "3D",
+    "Animation",
   ],
 
   show: ["Avatar: The Last Airbender", "Arcane", "Alice in Borderland"],
 
   charactersByShow: {
-    "Avatar: The Last Airbender": ["Aang","Katara","Sokka","Zuko","Toph","Azula","Iroh","Suki","Ty Lee","Mai"],
-    "Arcane": ["Vi","Jinx","Caitlyn","Jayce","Viktor","Ekko","Silco","Mel","Heimerdinger","Sevika"],
-    "Alice in Borderland": ["Arisu","Usagi","Chishiya","Kuina","Niragi","Aguni","Hatter","Tatta","Ann","Mira"]
-  }
+    "Avatar: The Last Airbender": [
+      "Aang",
+      "Katara",
+      "Sokka",
+      "Zuko",
+      "Toph",
+      "Azula",
+      "Iroh",
+      "Suki",
+      "Ty Lee",
+      "Mai",
+    ],
+    Arcane: [
+      "Vi",
+      "Jinx",
+      "Caitlyn",
+      "Jayce",
+      "Viktor",
+      "Ekko",
+      "Silco",
+      "Mel",
+      "Heimerdinger",
+      "Sevika",
+    ],
+    "Alice in Borderland": [
+      "Arisu",
+      "Usagi",
+      "Chishiya",
+      "Kuina",
+      "Niragi",
+      "Aguni",
+      "Hatter",
+      "Tatta",
+      "Ann",
+      "Mira",
+    ],
+  },
 };
 
 let myFont;
@@ -38,7 +81,7 @@ let fields = [
   { label: "character", value: "" },
   { label: "show", value: "" },
   { label: "style", value: "" },
-  { label: "program", value: "" }
+  { label: "program", value: "" },
 ];
 
 function setup() {
@@ -63,7 +106,6 @@ function draw() {
   let radius = max(windowWidth, windowHeight);
   radialGradient(width / 2, height / 2, inner, outer, radius);
 
-
   // MENU
   textFont(myDont);
   textSize(40);
@@ -84,19 +126,18 @@ function draw() {
   let imgY = height / 2 - imgH / 2;
 
   image(promptImg, imgX, imgY, imgW, imgH);
-  
-  
- //displays the x and y position of the mouse on the canvas
-fill(255) //white text
-  textSize(20);
-text(`${mouseX}, ${mouseY}`, 200, 20);  
 
-fill(255);
-textSize(20);
-text(`imgX: ${imgX}`, 20, 40);
-text(`imgY: ${imgY}`, 20, 70);
-text(`imgW: ${imgW}`, 20, 100);
-text(`imgH: ${imgH}`, 20, 130);
+  //displays the x and y position of the mouse on the canvas
+  fill(255); //white text
+  textSize(20);
+  text(`${mouseX}, ${mouseY}`, 200, 20);
+
+  fill(255);
+  textSize(20);
+  text(`imgX: ${imgX}`, 20, 40);
+  text(`imgY: ${imgY}`, 20, 70);
+  text(`imgW: ${imgW}`, 20, 100);
+  text(`imgH: ${imgH}`, 20, 130);
 
   // ⭐ INCH → PIXEL CONVERSION
   let inch = 96;
@@ -107,18 +148,17 @@ text(`imgH: ${imgH}`, 20, 130);
   let baseY = imgY + imgH * 0.825;
 
   // ⭐ APPLY YOUR SHIFTS
-  let shiftLeft = -inch;      // 1 inch left
-  let shiftDown = halfInch;   // 0.5 inch down
+  let shiftLeft = -inch; // 1 inch left
+  let shiftDown = halfInch; // 0.5 inch down
   let extraSpacing = halfInch; // 0.5 inch between stars
 
   // ⭐ FINAL STAR POSITIONS
-stars = [
-  { field: "characterShow", x: 638, y: 497, r: 28 },
-  { field: "style",         x: 694, y: 296, r: 28 },
-  { field: "program",       x: 747, y: 497, r: 28 },
-  { field: "all",           x: 805, y: 493, r: 28 }
-];
-
+  stars = [
+    { field: "characterShow", x: 638, y: 497, r: 28 },
+    { field: "style", x: 694, y: 296, r: 28 },
+    { field: "program", x: 747, y: 497, r: 28 },
+    { field: "all", x: 805, y: 493, r: 28 },
+  ];
 
   // DRAW STAR SHAPES
   let colors = ["#B24155", "#F3C9E2", "#CC448A", "#6D6B45"];
@@ -137,8 +177,8 @@ function drawStar(x, y, radius, color) {
   noStroke();
   beginShape();
   for (let i = 0; i < 10; i++) {
-    let angle = PI / 5 * i;
-    let r = (i % 2 === 0) ? radius : radius / 2;
+    let angle = (PI / 5) * i;
+    let r = i % 2 === 0 ? radius : radius / 2;
     vertex(x + cos(angle) * r, y + sin(angle) * r);
   }
   endShape(CLOSE);
@@ -156,28 +196,44 @@ function drawColoredPrompt(imgX, imgY, imgW, imgH) {
   let y4 = imgY + imgH * 0.5;
 
   drawPromptLine(
-    [{ text: "Edit ", color: "#4D3447" },
-     { text: fields[0].value || "___", color: "#B24155", bg: "#F7F2CF" }],
-    leftX, y1, maxWidth
+    [
+      { text: "Edit ", color: "#4D3447" },
+      { text: fields[0].value || "___", color: "#B24155", bg: "#F7F2CF" },
+    ],
+    leftX,
+    y1,
+    maxWidth,
   );
 
   drawPromptLine(
-    [{ text: "from ", color: "#4D3447" },
-     { text: fields[1].value || "___", color: "#6D6B45", bg: "#FFEFD6" }],
-    leftX, y2, maxWidth
+    [
+      { text: "from ", color: "#4D3447" },
+      { text: fields[1].value || "___", color: "#6D6B45", bg: "#FFEFD6" },
+    ],
+    leftX,
+    y2,
+    maxWidth,
   );
 
   drawPromptLine(
-    [{ text: "in a ", color: "#4D3447" },
-     { text: fields[2].value || "___", color: "#F3C9E2", bg: "#FDFAFA" },
-     { text: " style", color: "#4D3447" }],
-    leftX, y3, maxWidth
+    [
+      { text: "in a ", color: "#4D3447" },
+      { text: fields[2].value || "___", color: "#F3C9E2", bg: "#FDFAFA" },
+      { text: " style", color: "#4D3447" },
+    ],
+    leftX,
+    y3,
+    maxWidth,
   );
 
   drawPromptLine(
-    [{ text: "using ", color: "#4D3447" },
-     { text: fields[3].value || "___", color: "#CC448A", bg: "#FFEFD6" }],
-    leftX, y4, maxWidth
+    [
+      { text: "using ", color: "#4D3447" },
+      { text: fields[3].value || "___", color: "#CC448A", bg: "#FFEFD6" },
+    ],
+    leftX,
+    y4,
+    maxWidth,
   );
 }
 
@@ -187,15 +243,17 @@ function drawPromptLine(segments, startX, y, maxWidth) {
   let boxHeight = 26;
 
   textSize(24);
-  let widths = segments.map(s => textWidth(s.text) + padding * 2);
-  let totalWidth = widths.reduce((a, b) => a + b, 0) + gap * (segments.length - 1);
+  let widths = segments.map((s) => textWidth(s.text) + padding * 2);
+  let totalWidth =
+    widths.reduce((a, b) => a + b, 0) + gap * (segments.length - 1);
 
   let size = 24;
   while (totalWidth > maxWidth && size > 10) {
     size--;
     textSize(size);
-    widths = segments.map(s => textWidth(s.text) + padding * 2);
-    totalWidth = widths.reduce((a, b) => a + b, 0) + gap * (segments.length - 1);
+    widths = segments.map((s) => textWidth(s.text) + padding * 2);
+    totalWidth =
+      widths.reduce((a, b) => a + b, 0) + gap * (segments.length - 1);
   }
 
   let x = startX;
