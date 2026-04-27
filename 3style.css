@@ -1,13 +1,25 @@
+@font-face {
+  font-family: "Dareo";
+  src: url("Dareo.otf");
+}
+
+#hiddenForm {
+  position: relative;
+}
+
 #realSubmit {
-  position: absolute;
-  top: 78%;      /* adjust until it sits on your PNG button */
-  left: 62%;     /* adjust horizontally */
-  transform: translate(-50%, -50%);
   font-family: Dareo, sans-serif;
   font-size: 28px;
-  color: #FEFEF3;
+  background: #CC448A;
+  color: white;
   border: none;
   padding: 14px 28px;
   border-radius: 20px;
   cursor: pointer;
+
+  /* ⭐ Position it wherever you want */
+  position: absolute;
+  top: 80%;   /* adjust these two */
+  left: 50%;
+  transform: translateX(-50%);
 }

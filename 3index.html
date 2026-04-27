@@ -4,27 +4,29 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Video Prompt Generator</title>
-  <link rel="icon" type="image/x-icon" href="favicon.png">
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <title>Submit</title>
+  <link rel="stylesheet" href="style.css">
 
-  <!-- p5.js libraries -->
+  <!-- p5.js -->
   <script src="libraries/p5.min.js"></script>
   <script src="libraries/p5.sound.min.js"></script>
 </head>
 
 <body>
 
+  <!-- ⭐ HIDDEN FORM FOR FORMSPREE -->
   <form id="hiddenForm" action="https://formspree.io/f/meevwldn" method="POST">
     <input type="text" name="name" id="hName">
     <input type="email" name="email" id="hEmail">
     <input type="text" name="category" id="hCategory">
     <textarea name="idea" id="hIdea"></textarea>
 
+    <!-- ⭐ VISIBLE SUBMIT BUTTON -->
     <button id="realSubmit" type="submit">SUBMIT</button>
   </form>
 
+  <!-- p5.js sketch -->
   <script src="3sketch.js"></script>
-</body>
 
+</body>
 </html>

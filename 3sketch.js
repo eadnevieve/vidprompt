@@ -1,10 +1,8 @@
 let nameInput, emailInput, categorySelect, ideaInput;
 let submitImg;
-let submittedName = "";
-
-
 
 let imgX, imgY, imgW, imgH;
+let btnX, btnY, btnW, btnH;
 
 function preload() {
   submitImg = loadImage("submit.png");
@@ -15,7 +13,7 @@ function setup() {
 
   textFont("Dareo");
 
-  // INPUTS
+  // P5 INPUTS
   nameInput = createInput();
   emailInput = createInput();
 
@@ -27,7 +25,6 @@ function setup() {
 
   ideaInput = createElement('textarea');
 
-  // STYLE THEM (so they match your boxes)
   styleInput(nameInput);
   styleInput(emailInput);
   styleInput(categorySelect);
@@ -37,7 +34,6 @@ function setup() {
 function draw() {
   background('#4D3447');
 
-  // CENTER IMAGE PROPERLY
   let scaleFactor = 0.8;
   imgW = submitImg.width * scaleFactor;
   imgH = submitImg.height * scaleFactor;
@@ -47,18 +43,16 @@ function draw() {
 
   image(submitImg, imgX, imgY, imgW, imgH);
 
-  
-  // POSITION FORM ELEMENTS
   positionForm();
 
-  // TITLE
+  // Title (no name echo)
   textAlign(CENTER);
   textSize(60);
   fill("#FDFAFA");
   textFont("Starbim");
   text(`SUBMIT PLS,<3`, width / 2, height / 7);
 
-  // MENU
+  // Menu
   textFont("Dareo");
   textSize(40);
   fill("#FFEFD6");
@@ -68,41 +62,37 @@ function draw() {
   text("generator", width - 40, 110);
   text("submit", width - 40, 160);
   text("resources", width - 40, 210);
-  
-  
 
+  // Compute submit button area for p5 click
+  btnX = imgX + imgW * 0.60;
+  btnY = imgY + imgH * 0.78;
+  btnW = imgW * 0.20;
+  btnH = imgH * 0.08;
 }
 
-// 🎯 POSITIONING (THIS IS THE IMPORTANT PART)
 function positionForm() {
-
   let leftX = imgX + imgW * 0.12;
   let rightX = imgX + imgW * 0.56;
 
-  let row1Y = imgY + imgH * 0.245;
+  let row1Y = imgY + imgH * 0.25; // moved down
   let row2Y = imgY + imgH * 0.60;
 
   let boxW = imgW * 0.30;
   let boxH = 40;
 
-  // NAME
   nameInput.position(leftX, row1Y);
   nameInput.size(boxW, boxH);
 
-  // EMAIL
   emailInput.position(rightX, row1Y);
   emailInput.size(boxW, boxH);
 
-  // CATEGORY
   categorySelect.position(leftX, row2Y);
   categorySelect.size(boxW, boxH);
 
-  // IDEA
   ideaInput.position(rightX, row2Y);
-  ideaInput.size(boxW, boxH * .49);
+  ideaInput.size(boxW, boxH * 0.49);
 }
 
-// 🎨 STYLE FUNCTION
 function styleInput(el) {
   el.style("background", "#FEFEF3");
   el.style("border", "none");
@@ -111,48 +101,29 @@ function styleInput(el) {
   el.style("font-size", "16px");
 }
 
-// 🖱️ CLICK HANDLING
 function mousePressed() {
-
-  // MENU
+  // Menu
   if (mouseX > width - 200 && mouseX < width) {
-    if (mouseY > 40 && mouseY < 80)
-      window.location.href = "index.html";
-
-    if (mouseY > 90 && mouseY < 130)
-      window.location.href = "2index.html";
-
-    if (mouseY > 140 && mouseY < 180)
-      window.location.href = "3index.html";
-
-    if (mouseY > 190 && mouseY < 230)
-      window.location.href = "4index.html";
+    if (mouseY > 40 && mouseY < 80) window.location.href = "index.html";
+    if (mouseY > 90 && mouseY < 130) window.location.href = "2index.html";
+    if (mouseY > 140 && mouseY < 180) window.location.href = "3index.html";
+    if (mouseY > 190 && mouseY < 230) window.location.href = "4index.html";
   }
 
-  // SUBMIT BUTTON AREA (approximate position)
-  let btnX = imgX + imgW * 0.58;
-let btnY = imgY + imgH * 0.76;
-let btnW = imgW * 0.25;
-let btnH = imgH * 0.10;
+  // Submit click
+  if (
+    mouseX > btnX &&
+    mouseX < btnX + btnW &&
+    mouseY > btnY &&
+    mouseY < btnY + btnH
+  ) {
+    // Fill hidden HTML form
+    document.getElementById("hName").value = nameInput.value();
+    document.getElementById("hEmail").value = emailInput.value();
+    document.getElementById("hCategory").value = categorySelect.value();
+    document.getElementById("hIdea").value = ideaInput.value();
 
-
- if (
-  mouseX > btnX &&
-  mouseX < btnX + btnW &&
-  mouseY > btnY &&
-  mouseY < btnY + btnH
-) {
-  // Fill hidden HTML form with p5.js values
-  select("#hName").value(nameInput.value());
-  select("#hEmail").value(emailInput.value());
-  select("#hCategory").value(categorySelect.value());
-  select("#hIdea").value(ideaInput.value());
-
-  // Submit the hidden form
-document.getElementById("realSubmit").click();
-   
-  if (clickedSubmitButton) {
-    submittedName = nameInput.value();
+    // Trigger HTML submit
+    document.getElementById("realSubmit").click();
   }
-}
 }
