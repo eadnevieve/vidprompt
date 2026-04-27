@@ -274,9 +274,9 @@ function draw() {
   drawColoredPrompt(imgX, imgY, imgW, imgH);
 
   // ⭐ FLOATING MOUSE COORDS
-  fill(255);
-  textSize(20);
-  text(`${mouseX}, ${mouseY}`, mouseX + 15, mouseY - 15);
+ // fill(255);
+  //textSize(20);
+  //text(`${mouseX}, ${mouseY}`, mouseX + 15, mouseY - 15);
 }
 //CLICKITY CLICK❤️
 function mousePressed() {
