@@ -3,7 +3,7 @@
 
   <form id="submitForm" action="https://formspree.io/f/meevwldn" method="POST">
 
-    <div class="row">
+    <div class="row top">
       <div class="left">
         <label>Name*</label>
         <input type="text" name="name" required>
@@ -15,7 +15,7 @@
       </div>
     </div>
 
-    <div class="row">
+    <div class="row mid">
       <div class="left">
         <label>Category*</label>
         <select name="category" required>
@@ -28,10 +28,12 @@
       </div>
     </div>
 
-    <label>Idea*</label>
-    <textarea name="idea" rows="5" required></textarea>
+    <div class="row idea">
+      <label>Idea*</label>
+      <textarea name="idea" rows="5" required></textarea>
+    </div>
 
-    <button type="submit">SUBMIT</button>
+    <button type="submit" class="submit-btn">SUBMIT</button>
 
   </form>
 </div>
