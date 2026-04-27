@@ -42,6 +42,18 @@ function draw() {
   image(submitImg, imgX, imgY, imgW, imgH);
 
   positionForm();
+  
+  // MENU (top-right)
+  textFont("Dareo");
+  textSize(40);
+  fill("#FFEFD6");
+  textAlign(RIGHT, CENTER);
+
+  text("home", width - 40, 60);
+  text("generator", width - 40, 110);
+  text("submit", width - 40, 160);
+  text("resources", width - 40, 210);
+
 
   // Title
   textAlign(CENTER);
@@ -89,7 +101,18 @@ function styleInput(el) {
 }
 
 function mousePressed() {
-  // Submit click
+   // MENU CLICKS
+  if (mouseX > width - 200 && mouseX < width) {
+    if (mouseY > 40 && mouseY < 80)
+      window.location.href = "index.html";
+    if (mouseY > 90 && mouseY < 130)
+      window.location.href = "2index.html";
+    if (mouseY > 140 && mouseY < 180)
+      window.location.href = "3index.html";
+   if (mouseY > 190 && mouseY < 230)
+      window.location.href = "4index.html";  
+  }
+// Submit click
   if (
     mouseX > btnX &&
     mouseX < btnX + btnW &&
@@ -97,10 +120,10 @@ function mousePressed() {
     mouseY < btnY + btnH
   ) {
     document.getElementById("hName").value = nameInput.value();
-    document.getElementById("hEmail").value = emailInput.value();
-    document.getElementById("hCategory").value = categorySelect.value();
-    document.getElementById("hIdea").value = ideaInput.value();
+document.getElementById("hEmail").value = emailInput.value();
+document.getElementById("hCategory").value = categorySelect.value();
+document.getElementById("hIdea").value = ideaInput.value();
 
-    document.getElementById("realSubmit").click();
+document.getElementById("realSubmit").click();
   }
 }
