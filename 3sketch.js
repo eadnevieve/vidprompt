@@ -1,5 +1,8 @@
 let nameInput, emailInput, categorySelect, ideaInput;
 let submitImg;
+let submittedName = "";
+
+
 
 let imgX, imgY, imgW, imgH;
 
@@ -44,6 +47,7 @@ function draw() {
 
   image(submitImg, imgX, imgY, imgW, imgH);
 
+  
   // POSITION FORM ELEMENTS
   positionForm();
 
@@ -52,7 +56,7 @@ function draw() {
   textSize(60);
   fill("#FDFAFA");
   textFont("Starbim");
-  text(`SUBMIT PLS,<3 ${nameInput.value()}`, width / 2, height / 7);
+  text(`SUBMIT PLS,<3`, width / 2, height / 7);
 
   // MENU
   textFont("Dareo");
@@ -64,6 +68,9 @@ function draw() {
   text("generator", width - 40, 110);
   text("submit", width - 40, 160);
   text("resources", width - 40, 210);
+  
+  
+
 }
 
 // 🎯 POSITIONING (THIS IS THE IMPORTANT PART)
@@ -72,7 +79,7 @@ function positionForm() {
   let leftX = imgX + imgW * 0.12;
   let rightX = imgX + imgW * 0.56;
 
-  let row1Y = imgY + imgH * 0.22;
+  let row1Y = imgY + imgH * 0.245;
   let row2Y = imgY + imgH * 0.60;
 
   let boxW = imgW * 0.30;
@@ -92,15 +99,15 @@ function positionForm() {
 
   // IDEA
   ideaInput.position(rightX, row2Y);
-  ideaInput.size(boxW, boxH * 2);
+  ideaInput.size(boxW, boxH * .49);
 }
 
 // 🎨 STYLE FUNCTION
 function styleInput(el) {
-  el.style("background", "#FBF0F6");
+  el.style("background", "#FEFEF3");
   el.style("border", "none");
   el.style("border-radius", "20px");
-  el.style("padding", "20px");
+  el.style("padding", "19px");
   el.style("font-size", "16px");
 }
 
@@ -123,10 +130,11 @@ function mousePressed() {
   }
 
   // SUBMIT BUTTON AREA (approximate position)
-  let btnX = imgX + imgW * 0.60;
-  let btnY = imgY + imgH * 0.78;
-  let btnW = imgW * 0.20;
-  let btnH = imgH * 0.08;
+  let btnX = imgX + imgW * 0.58;
+let btnY = imgY + imgH * 0.76;
+let btnW = imgW * 0.25;
+let btnH = imgH * 0.10;
+
 
  if (
   mouseX > btnX &&
@@ -142,5 +150,9 @@ function mousePressed() {
 
   // Submit the hidden form
   document.getElementById("hiddenForm").submit();
+   
+  if (clickedSubmitButton) {
+    submittedName = nameInput.value();
+  }
 }
 }
