@@ -112,18 +112,18 @@ function draw() {
 
   // ⭐ STAR POSITIONS (relative to PNG)
   stars = [
-    { field: "characterShow", x: imgX + imgW * 0.35, y: imgY + imgH * 0.82, r: 28 },
-    { field: "style",         x: imgX + imgW * 0.42, y: imgY + imgH * 0.82, r: 28 },
-    { field: "program",       x: imgX + imgW * 0.50, y: imgY + imgH * 0.82, r: 28 },
-    { field: "all",           x: imgX + imgW * 0.58, y: imgY + imgH * 0.82, r: 28 }
+    { field: "characterShow", x: imgX + imgW * 0.25, y: imgY + imgH * 0.89, r: 28 },
+    { field: "style",         x: imgX + imgW * 0.35, y: imgY + imgH * 0.89, r: 28 },
+    { field: "program",       x: imgX + imgW * 0.45, y: imgY + imgH * 0.89, r: 28 },
+    { field: "all",           x: imgX + imgW * 0.58, y: imgY + imgH * 0.89, r: 28 }
   ];
 
   // ⭐ DEBUG CIRCLES (delete later)
   noFill();
   stroke("lime");
-  strokeWeight(3);
+  strokeWeight(0);
   for (let s of stars) {
-    circle(s.x, s.y, s.r * 2);
+    circle(s.x, s.y, s.r * 1);
   }
 
   drawColoredPrompt();
