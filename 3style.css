@@ -1,12 +1,11 @@
 #realSubmit {
   position: absolute;
-  top: 99%;      /* adjust until it sits on your PNG button */
-  left: 89%;     /* adjust horizontally */
+  top: 78%;      /* adjust until it sits on your PNG button */
+  left: 62%;     /* adjust horizontally */
   transform: translate(-50%, -50%);
   font-family: Dareo, sans-serif;
   font-size: 28px;
-  background: #CC448A;
-  color: white;
+  color: #FEFEF3;
   border: none;
   padding: 14px 28px;
   border-radius: 20px;
