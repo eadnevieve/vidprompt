@@ -128,31 +128,25 @@ function draw() {
 
   image(promptImg, imgX, imgY, imgW, imgH);
 
-  // Instead of the hardcoded stars array at the top, they are now inside the draw function, so that they can use the imgX, imgY, imgW, and imgH variables to calculate their positions based on the prompt image. This ensures that the star buttons are correctly positioned relative to the prompt image, even if the image size or position changes:
-  // after you calculate imgX, imgY, imgW, imgH...
+  // STAR HITBOXES
   stars = [
-    {
-      field: "characterShow",
-      x: imgX + imgW * 0.35,
-      y: imgY + imgH * 0.82,
-      r: 28,
-    },
-    { field: "style", x: imgX + imgW * 0.42, y: imgY + imgH * 0.82, r: 28 },
-    { field: "program", x: imgX + imgW * 0.5, y: imgY + imgH * 0.82, r: 28 },
-    { field: "all", x: imgX + imgW * 0.58, y: imgY + imgH * 0.82, r: 28 },
+    { field: "characterShow", x: imgX + imgW * 0.35, y: imgY + imgH * 0.82, r: 28 },
+    { field: "style",         x: imgX + imgW * 0.42, y: imgY + imgH * 0.82, r: 28 },
+    { field: "program",       x: imgX + imgW * 0.50, y: imgY + imgH * 0.82, r: 28 },
+    { field: "all",           x: imgX + imgW * 0.58, y: imgY + imgH * 0.82, r: 28 }
   ];
 
-  //This callus up the function into draw with the imgX, imgY, imgW, and imgH parameters that are used to calculate the position and size of the prompt area, ensuring that the text is properly aligned within the image.
   // DEBUG: show star hitboxes
-for (let s of stars) {
-  fill("rgba(255, 255, 0, 0.5)");
-  noStroke();
-  circle(s.x, s.y, s.r * 2);
+  for (let s of stars) {
+    fill("rgba(255, 255, 0, 0.5)");
+    noStroke();
+    circle(s.x, s.y, s.r * 2);
+  }
+
+  // DRAW THE PROMPT TEXT
+  drawColoredPrompt(imgX, imgY, imgW, imgH);
 }
 
-}
-
-}
 //CENTERING text
 // the imgX, imgY, imgW, and imgH parameters are used to calculate the position and size of the prompt area, ensuring that the text is properly aligned within the image.
 function drawColoredPrompt(imgX, imgY, imgW, imgH) {
