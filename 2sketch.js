@@ -1,5 +1,4 @@
 let promptImg;
-let img;
 
 // WORD LISTS
 let words = {
@@ -58,11 +57,10 @@ let fields = [
   { label: "program", value: "" }
 ];
 
-// Stars (positions will be overwritten in draw)
+// Stars (positions updated in draw)
 let stars = [];
 
 function preload() {
-  img = loadImage('bgprompt.png');
   myFont = loadFont('Starbim.otf');
   myDont = loadFont('Dareo.otf');
   promptImg = loadImage("prompt.png");
@@ -84,8 +82,7 @@ function radialGradient(x, y, innerColor, outerColor, radius) {
 }
 
 function draw() {
-  background("#C03556");
-
+  // ⭐ YOUR GRADIENT BACKGROUND
   let inner = color("#FFEFD6");
   let outer = color("#CC448A");
   let radius = max(windowWidth, windowHeight);
@@ -104,7 +101,7 @@ function draw() {
   // Switch back to Starbim
   textFont("Starbim");
 
-  // Center prompt PNG
+  // ⭐ CENTER PROMPT PNG
   let scaleFactor = 0.8;
   let imgW = promptImg.width * scaleFactor;
   let imgH = promptImg.height * scaleFactor;
@@ -131,7 +128,7 @@ function draw() {
 
   drawColoredPrompt();
 
-  // Mouse position (for debugging)
+  // Mouse position (debug)
   fill(255);
   textSize(20);
   text(`${mouseX}, ${mouseY}`, 200, 20);
@@ -218,7 +215,7 @@ function drawPromptLine(segments, startX, y, maxWidth) {
   }
 }
 
-// CHARACTER button (Auto-updates show)
+// CHARACTER button
 function assignCharacterShow() {
   let allShows = Object.keys(words.charactersByShow);
   let chosenShow = random(allShows);
