@@ -1,6 +1,6 @@
 #realSubmit {
   position: absolute;
-  top: 78%;      /* adjust until it sits on your PNG button */
+  top: 55%;      /* adjust until it sits on your PNG button */
   left: 62%;     /* adjust horizontally */
   transform: translate(-50%, -50%);
   font-family: Dareo, sans-serif;
