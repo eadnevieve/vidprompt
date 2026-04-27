@@ -106,6 +106,11 @@ function draw() {
     { field: "all",           x: baseX + shiftLeft + extraSpacing * 3,  y: baseY + shiftDown, r: 28 }
   ];
 
+
+  textSize(24);
+  text("X: "+mouseX, 0, height/4);
+  text("Y: "+mouseY, 0, height/2);
+  
   // DRAW STAR SHAPES
   let colors = ["#B24155", "#F3C9E2", "#CC448A", "#6D6B45"];
   for (let i = 0; i < stars.length; i++) {
