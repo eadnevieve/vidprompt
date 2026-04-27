@@ -63,10 +63,7 @@ function draw() {
   let radius = max(windowWidth, windowHeight);
   radialGradient(width / 2, height / 2, inner, outer, radius);
 
-  textSize(24);
-  text("X: "+mouseX, 0, height/4);
-  text("Y: "+mouseY, 0, height/2);
-  
+
   // MENU
   textFont(myDont);
   textSize(40);
@@ -87,6 +84,10 @@ function draw() {
   let imgY = height / 2 - imgH / 2;
 
   image(promptImg, imgX, imgY, imgW, imgH);
+  
+  textSize(60);
+  text("X: "+mouseX, 0, height/4);
+  text("Y: "+mouseY, 0, height/2);
 
   // ⭐ INCH → PIXEL CONVERSION
   let inch = 96;
