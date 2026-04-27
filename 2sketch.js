@@ -91,6 +91,13 @@ fill(255) //white text
   textSize(20);
 text(`${mouseX}, ${mouseY}`, 200, 20);  
 
+fill(255);
+textSize(20);
+text(`imgX: ${imgX}`, 20, 40);
+text(`imgY: ${imgY}`, 20, 70);
+text(`imgW: ${imgW}`, 20, 100);
+text(`imgH: ${imgH}`, 20, 130);
+
   // ⭐ INCH → PIXEL CONVERSION
   let inch = 96;
   let halfInch = 48;
