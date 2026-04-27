@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Video Prompt Generator</title>
-    <link rel="icon" type="image/x-icon" href="favicon.png">    
-    <link rel="stylesheet" type="text/css" href="style.css" />
+  <title>Video Prompt Generator</title>
+  <link rel="icon" type="image/x-icon" href="favicon.png">
+  <link rel="stylesheet" type="text/css" href="style.css">
 
-    <script src="libraries/p5.min.js"></script>
-    <script src="libraries/p5.sound.min.js"></script>
-  </head>
+  <!-- p5.js libraries -->
+  <script src="libraries/p5.min.js"></script>
+  <script src="libraries/p5.sound.min.js"></script>
+</head>
 
-  <body>
+<body>
 
-    <!-- ⭐ REAL SUBMISSION FORM (HTML, not p5) -->
+  <!-- ⭐ FORM + PNG WRAPPER -->
+  <div class="form-wrapper">
+    <img src="submit.png" class="form-bg">
+
     <form id="submitForm" action="https://formspree.io/f/meevwldn" method="POST">
-
       <label>Name*</label>
       <input type="text" name="name" required>
 
@@ -35,11 +38,11 @@
       <textarea name="idea" rows="5" required></textarea>
 
       <button type="submit">SUBMIT</button>
-
     </form>
+  </div>
 
-    <!-- ⭐ Your p5.js sketch -->
-    <script src="3sketch.js"></script>
+  <!-- ⭐ Your p5.js sketch STILL runs -->
+  <script src="3sketch.js"></script>
 
-  </body>
+</body>
 </html>

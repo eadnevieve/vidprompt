@@ -1,61 +1,65 @@
-// Define the inputs for this form as global variables.
+// =========================
+// GLOBAL VARIABLES
+// =========================
+let imgX, imgY, imgW, imgH;
 let nameInput;
 let fontSelect;
 let foodRadio;
 let submitImg;
 
+// =========================
+// PRELOAD
+// =========================
 function preload() {
   submitImg = loadImage("submit.png");
 }
+
+// =========================
+// SETUP
+// =========================
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  background('#C03556');
-    fill('#FBF0F6');
 
-  // Name.
+  // Create inputs (but don't position yet)
   nameInput = createInput();
-  nameInput.position(729, 335, 300, 200);
-
-  // Assign radio buttons to foodRadio.
   foodRadio = createRadio();
-  foodRadio.position(width / 2, height /1.5);
+  fontSelect = createSelect();
 
-  // List the radio options for foodRadio, along
-  // with the background color associated with each selection.
+  // Radio options
   foodRadio.option('#F7F5BC', 'Name');
   foodRadio.option('#B8E3FF', 'Email');
   foodRadio.option('#C79A9A', 'Category');
 
-  // Assign a select dropdown to fontSelect.
-  fontSelect = createSelect();
-  fontSelect.position(width / 4, height / 2);
-
-  // List out the dropdown options for fontSelect.
+  // Dropdown options
   fontSelect.option('Dareo');
   fontSelect.option('Cursive');
   fontSelect.option('Boo');
 
-  // If the fontSelect selection is changed, call the
-  // fontChanged function.
   fontSelect.changed(fontChanged);
 }
 
+// =========================
+// DRAW LOOP
+// =========================
 function draw() {
- 
-  let backgroundColor = foodRadio.value();
-  background('#4D3447');
-  
-   // Center submit PNG
-  let scaleFactor = 0.8;
-  let imgW = submitImg.width * scaleFactor;
-  let imgH = submitImg.height * scaleFactor;
-  let imgX = width / 2 - imgW / 3;
-  let imgY = height / 2 - imgH / 3;
+  background("#4D3447");
 
+  // --- Compute PNG position ---
+  let scaleFactor = 0.8;
+  imgW = submitImg.width * scaleFactor;
+  imgH = submitImg.height * scaleFactor;
+  imgX = width / 2 - imgW / 2;
+  imgY = height / 2 - imgH / 2;
+
+  // Draw PNG
   image(submitImg, imgX, imgY, imgW, imgH);
-  
-  
- // MENU (top-right)
+
+  // --- Position inputs relative to PNG ---
+  nameInput.position(imgX + 120, imgY + 140);
+  foodRadio.position(imgX + 120, imgY + 220);
+  fontSelect.position(imgX + 120, imgY + 300);
+
+  // --- MENU (top-right) ---
   textFont("Dareo");
   textSize(40);
   fill("#FFEFD6");
@@ -66,50 +70,28 @@ function draw() {
   text("submit", width - 40, 160);
   text("resources", width - 40, 210);
 
-
-
-  // Switch back to Starbim
+  // --- Header text ---
   textFont("Starbim");
-
-  // Create the header for the form.
-  textSize(25);
-  textFont(`Outline style`);
-  text('Hello', CENTER);
-
-  // Create the text inputs that will update with the
-  // new user inputs.
-textSize(60);
-    textFont(`Starbim`);  
-    fill("#FDFAFA");
+  textSize(60);
+  fill("#FDFAFA");
   text(`Submit PLS,<3 ${nameInput.value()}`, width / 2, height / 5);
 
- //displays the x and y position of the mouse on the canvas
-fill(255) //white text
+  // Mouse position (debug)
+  fill(255);
   textSize(20);
-text(`${mouseX}, ${mouseY}`, 200, 20);  
+  text(`${mouseX}, ${mouseY}`, 200, 20);
 }
 
+// =========================
+// FONT CHANGE HANDLER
+// =========================
 function fontChanged() {
-  // When the fontSelect value is changed,
-  // update the canvas's font selection to the
-  // new value.
   let fontSelection = fontSelect.value();
-  textSize(20);
   textFont(fontSelection);
 }
 
-//CLICKING making it work
-
+// =========================
+// MENU CLICKS
+// =========================
 function mousePressed() {
-  // MENU CLICKS
-  if (mouseX > width - 200 && mouseX < width) {
-    if (mouseY > 40 && mouseY < 80)
-      window.location.href = "index.html";
-    if (mouseY > 90 && mouseY < 130)
-      window.location.href = "2index.html";
-    if (mouseY > 140 && mouseY < 180)
-      window.location.href = "3index.html";
-   if (mouseY > 190 && mouseY < 230)
-      window.location.href = "4index.html";  
-  }
-}
+  if (mouseX > width - 200 && mouseX
