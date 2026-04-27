@@ -127,34 +127,12 @@ function draw() {
 
   image(promptImg, imgX, imgY, imgW, imgH);
 
-  
-
-  fill(255);
-  textSize(20);
-  text(`imgX: ${imgX}`, 20, 40);
-  text(`imgY: ${imgY}`, 20, 70);
-  text(`imgW: ${imgW}`, 20, 100);
-  text(`imgH: ${imgH}`, 20, 130);
-
-  // ⭐ INCH → PIXEL CONVERSION
-  let inch = 96;
-  let halfInch = 48;
-
-  // ⭐ BASE RELATIVE POSITION
-  let baseX = imgX + imgW * 0.375;
-  let baseY = imgY + imgH * 0.825;
-
-  // ⭐ APPLY YOUR SHIFTS
-  let shiftLeft = -inch; // 1 inch left
-  let shiftDown = halfInch; // 0.5 inch down
-  let extraSpacing = halfInch; // 0.5 inch between stars
-
-  // ⭐ FINAL STAR POSITIONS
+  // ⭐ FINAL STAR POSITIONS (TEMPORARY ABSOLUTE)
   stars = [
     { field: "characterShow", x: 638, y: 497, r: 28 },
-    { field: "style", x: 694, y: 296, r: 28 },
-    { field: "program", x: 747, y: 497, r: 28 },
-    { field: "all", x: 805, y: 493, r: 28 },
+    { field: "style",         x: 694, y: 296, r: 28 },
+    { field: "program",       x: 747, y: 497, r: 28 },
+    { field: "all",           x: 805, y: 493, r: 28 }
   ];
 
   // DRAW STAR SHAPES
@@ -162,16 +140,23 @@ function draw() {
   for (let i = 0; i < stars.length; i++) {
     let s = stars[i];
     drawStar(s.x, s.y, s.r, colors[i]);
-    // ⭐ DRAW COORDINATES LAST — always visible
-fill(255);
-textSize(20);
-text(`${mouseX}, ${mouseY}`, mouseX + 15, mouseY - 15);
-
   }
 
   // DRAW PROMPT TEXT
   drawColoredPrompt(imgX, imgY, imgW, imgH);
+
+  // ⭐ DEBUG TEXT — ALWAYS DRAWN LAST
+  fill(255);
+  textSize(20);
+  text(`imgX: ${imgX}`, 20, 40);
+  text(`imgY: ${imgY}`, 20, 70);
+  text(`imgW: ${imgW}`, 20, 100);
+  text(`imgH: ${imgH}`, 20, 130);
+
+  // ⭐ MOUSE COORDINATES — FLOATING
+  text(`${mouseX}, ${mouseY}`, mouseX + 15, mouseY - 15);
 }
+
 
 // ---------------------- STAR SHAPE ----------------------
 function drawStar(x, y, radius, color) {
