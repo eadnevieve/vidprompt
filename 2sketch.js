@@ -1,8 +1,5 @@
 let promptImg;
-
-//make sure starts are accessible to all functions, and not just mousePressed by declaring at the top of your sketch, which makes it 'global' and usable anywhere in the code. This way, you can define the stars array once and use it in both the draw function (to display the stars) and the mousePressed function (to check for clicks on the stars) without any issues.
-let stars = [];
-
+let img;
 
 // WORD LISTS
 let words = {
@@ -37,42 +34,15 @@ let words = {
 
   charactersByShow: {
     "Avatar: The Last Airbender": [
-      "Aang",
-      "Katara",
-      "Sokka",
-      "Zuko",
-      "Toph",
-      "Azula",
-      "Iroh",
-      "Suki",
-      "Ty Lee",
-      "Mai"
+      "Aang","Katara","Sokka","Zuko","Toph","Azula","Iroh","Suki","Ty Lee","Mai"
     ],
 
     "Arcane": [
-      "Vi",
-      "Jinx",
-      "Caitlyn",
-      "Jayce",
-      "Viktor",
-      "Ekko",
-      "Silco",
-      "Mel",
-      "Heimerdinger",
-      "Sevika"
+      "Vi","Jinx","Caitlyn","Jayce","Viktor","Ekko","Silco","Mel","Heimerdinger","Sevika"
     ],
 
     "Alice in Borderland": [
-      "Arisu",
-      "Usagi",
-      "Chishiya",
-      "Kuina",
-      "Niragi",
-      "Aguni",
-      "Hatter",
-      "Tatta",
-      "Ann",
-      "Mira"
+      "Arisu","Usagi","Chishiya","Kuina","Niragi","Aguni","Hatter","Tatta","Ann","Mira"
     ]
   }
 };
@@ -80,13 +50,7 @@ let words = {
 let myFont;
 let myDont;
 
-function preload() {
-  myFont = loadFont('Starbim.otf');
-  myDont = loadFont('Dareo.otf');
-  promptImg = loadImage("prompt.png");
-}
-
-// FIELDS variable that holds an array of objects 
+// FIELDS
 let fields = [
   { label: "character", value: "" },
   { label: "show", value: "" },
@@ -94,34 +58,48 @@ let fields = [
   { label: "program", value: "" }
 ];
 
-// STAR BUTTONS (new roles)
-// let stars = [
-//   { field: "characterShow", x: 655, y: 470, r: 28 }, // star 1
-//   { field: "style",         x: 705, y: 470, r: 28 }, // star 2
-//   { field: "program",       x: 755, y: 470, r: 28 }, // star 3
-//   { field: "all",           x: 805, y: 470, r: 28 }  // star 4
-// ];
+// Stars (positions will be overwritten in draw)
+let stars = [];
 
+function preload() {
+  img = loadImage('bgprompt.png');
+  myFont = loadFont('Starbim.otf');
+  myDont = loadFont('Dareo.otf');
+  promptImg = loadImage("prompt.png");
+}
 
 function setup() { 
   createCanvas(windowWidth, windowHeight);
-  // Apply the loaded font
   textFont(myFont);
 }
 
+function radialGradient(x, y, innerColor, outerColor, radius) {
+  noFill();
+  for (let r = radius; r > 6; r -= 2) {
+    let t = r / radius;
+    let c = lerpColor(outerColor, innerColor, 1 - t);
+    stroke(c);
+    ellipse(x, y, r * 2, r * 2);
+  }
+}
 
 function draw() {
   background("#C03556");
 
-  // MENU (top-right)
-  textFont(myDont);
+  let inner = color("#FFEFD6");
+  let outer = color("#CC448A");
+  let radius = max(windowWidth, windowHeight);
+  radialGradient(width / 2, height / 2, inner, outer, radius);
+
+  // MENU
+  textFont("Dareo");
   textSize(40);
   fill("#FFEFD6");
   textAlign(RIGHT, CENTER);
-
   text("home", width - 40, 60);
   text("generator", width - 40, 110);
   text("submit", width - 40, 160);
+  text("resources", width - 40, 210);
 
   // Switch back to Starbim
   textFont("Starbim");
@@ -135,32 +113,41 @@ function draw() {
 
   image(promptImg, imgX, imgY, imgW, imgH);
 
-// Instead of the hardcoded stars array at the top, they are now inside the draw function, so that they can use the imgX, imgY, imgW, and imgH variables to calculate their positions based on the prompt image. This ensures that the star buttons are correctly positioned relative to the prompt image, even if the image size or position changes:
-// after you calculate imgX, imgY, imgW, imgH...
-stars = [
-  { field: "characterShow", x: imgX + imgW * 0.35, y: imgY + imgH * 0.82, r: 28 },
-  { field: "style",         x: imgX + imgW * 0.42, y: imgY + imgH * 0.82, r: 28 },
-  { field: "program",       x: imgX + imgW * 0.50, y: imgY + imgH * 0.82, r: 28 },
-  { field: "all",           x: imgX + imgW * 0.58, y: imgY + imgH * 0.82, r: 28 }
-];
+  // ⭐ STAR POSITIONS (relative to PNG)
+  stars = [
+    { field: "characterShow", x: imgX + imgW * 0.35, y: imgY + imgH * 0.82, r: 28 },
+    { field: "style",         x: imgX + imgW * 0.42, y: imgY + imgH * 0.82, r: 28 },
+    { field: "program",       x: imgX + imgW * 0.50, y: imgY + imgH * 0.82, r: 28 },
+    { field: "all",           x: imgX + imgW * 0.58, y: imgY + imgH * 0.82, r: 28 }
+  ];
 
-  //This callus up the function into draw with the imgX, imgY, imgW, and imgH parameters that are used to calculate the position and size of the prompt area, ensuring that the text is properly aligned within the image.
-drawColoredPrompt(imgX, imgY, imgW, imgH);
+  // ⭐ DEBUG CIRCLES (delete later)
+  noFill();
+  stroke("lime");
+  strokeWeight(3);
+  for (let s of stars) {
+    circle(s.x, s.y, s.r * 2);
+  }
+
+  drawColoredPrompt();
+
+  // Mouse position (for debugging)
+  fill(255);
+  textSize(20);
+  text(`${mouseX}, ${mouseY}`, 200, 20);
 }
-//CENTERING text
-// the imgX, imgY, imgW, and imgH parameters are used to calculate the position and size of the prompt area, ensuring that the text is properly aligned within the image.
-function drawColoredPrompt(imgX, imgY, imgW, imgH) {
-  //i guessed a bit on these multipliers to get the text in the right place... By multiplying the imgX and imgW by specific values, the code determines the horizontal positions (leftX and rightX) for the text within the prompt image. This allows for proper alignment and spacing of the text within the designated area of the image.
-  let leftX  = imgX + imgW * 0.15; // deterimines horizontal position
-  let rightX = imgX + imgW * 0.5; // determines font size and max width of text
+
+// CENTERING TEXT
+function drawColoredPrompt() {
+  let leftX = 603;
+  let rightX = 864;
   let maxWidth = rightX - leftX;
 
-  //by multiplying the imgY and imgH by specific values, the code determines the vertical positions (y1, y2, y3, y4) for each line of text within the prompt image. This ensures that the text is evenly spaced and properly aligned within the designated area of the image.
-  let y1 = imgY + imgH * 0.22;
-  let y2 = imgY + imgH * 0.33;
-  let y3 = imgY + imgH * 0.44;
-  let y4 = imgY + imgH * 0.5;
-//ASSIGNING COLORS
+  let y1 = 260;
+  let y2 = 289;
+  let y3 = 318;
+  let y4 = 347;
+
   drawPromptLine(
     [
       { text: "Edit ", color: "#4D3447", bg: null },
@@ -194,7 +181,7 @@ function drawColoredPrompt(imgX, imgY, imgW, imgH) {
     leftX, y4, maxWidth
   );
 }
-//ADDING PADDING
+
 function drawPromptLine(segments, startX, y, maxWidth) {
   let padding = 4;
   let gap = 4;
@@ -243,58 +230,38 @@ function assignCharacterShow() {
   fields[1].value = chosenShow;
 }
 
-
-// Style button (auto-updates character)
+// Style button
 function assignStyle() {
   let newWord = random(words.style);
   while (newWord === fields[2].value) newWord = random(words.style);
   fields[2].value = newWord;
 }
 
-//PROGRAM button
+// Program button
 function assignProgram() {
   let newWord = random(words.program);
   while (newWord === fields[3].value) newWord = random(words.program);
   fields[3].value = newWord;
 }
 
-//ALL button
+// ALL button
 function generateAll() {
   assignCharacterShow();
   assignStyle();
   assignProgram();
 }
 
-//CLICKING making it work
-// function mousePressed() {
-//   // MENU CLICKS
-//   if (mouseX > width - 200 && mouseX < width) {
-//     if (mouseY > 40 && mouseY < 80)
-//       window.location.href = "index.html";
-//     if (mouseY > 90 && mouseY < 130)
-//       window.location.href = "2index.html";
-//     if (mouseY > 140 && mouseY < 180)
-//       window.location.href = "3index.html";
-//   }
-
-//   // STAR button CLICKS
-//   for (let s of stars) {
-//     let d = dist(mouseX, mouseY, s.x, s.y);
-
-//     if (d < s.r) {
-//       if (s.field === "characterShow") assignCharacterShow();
-//       else if (s.field === "style") assignStyle();
-//       else if (s.field === "program") assignProgram();
-//       else if (s.field === "all") generateAll();
-//     }
-//   }
-// }
-
-// I had to keep checking your mousepressed and the location of the stars, so I added some console logs to make it easier to debug and see what's going on when you click. This way, you can see exactly where you're clicking and the current positions of the stars, which should help you identify any issues with the click detection logic. This is sourced from Calude Code. 
+// CLICKING
 function mousePressed() {
-  console.log("clicked at:", mouseX, mouseY);
-  console.log("stars:", stars.map(s => `${s.field}: (${Math.round(s.x)}, ${Math.round(s.y)})`));
-  
+  // MENU
+  if (mouseX > width - 200 && mouseX < width) {
+    if (mouseY > 40 && mouseY < 80) window.location.href = "index.html";
+    if (mouseY > 90 && mouseY < 130) window.location.href = "2index.html";
+    if (mouseY > 140 && mouseY < 180) window.location.href = "3index.html";
+    if (mouseY > 190 && mouseY < 230) window.location.href = "4index.html";
+  }
+
+  // STAR CLICKS
   for (let s of stars) {
     let d = dist(mouseX, mouseY, s.x, s.y);
     if (d < s.r) {
