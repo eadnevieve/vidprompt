@@ -129,9 +129,9 @@ function draw() {
   drawColoredPrompt();
 
   // Mouse position (debug)
-  fill(255);
-  textSize(20);
-  text(`${mouseX}, ${mouseY}`, 200, 20);
+ // fill(255);
+  //textSize(20);
+  //text(`${mouseX}, ${mouseY}`, 200, 20);
 }
 
 // CENTERING TEXT
