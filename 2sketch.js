@@ -146,6 +146,7 @@ for (let s of stars) {
   circle(s.x, s.y, s.r * 2);
 }
 
+
 }
 
 }
